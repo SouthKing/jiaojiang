@@ -82,11 +82,60 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MergeTwoSortedArrays.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MergeTwoSortedArrays.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/MergeTwoSortedArrays.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="672" selection-end="672" vertical-scroll-proportion="0.36764705">
+            <state line="25" column="0" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddTwoNumbers.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/AddTwoNumbers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="13" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DuplicatesFromBST.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jiaojiang/tripadvisor/DuplicatesFromBST.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="13" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NthOrder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jiaojiang/tripadvisor/NthOrder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Queue.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jiaojiang/misc/Queue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HousePainter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/jiaojiang/misc/HousePainter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="8" selection-start="167" selection-end="167" vertical-scroll-proportion="0.13235295">
+              <folding>
+                <marker date="1375914479000" expanded="true" signature="244:397" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -190,6 +239,32 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="twitter" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jiaojiang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jiaojiang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jiaojiang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jiaojiang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tripadvisor" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -826,16 +901,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/LetterCombination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/TwoSum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/RemoveDuplicatesInSortedArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" />
@@ -854,11 +919,6 @@
     <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/ContainerMostWater.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/AddTwoNumbers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/FirstMissingPositive.java">
@@ -893,8 +953,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/MergeTwoSortedArrays.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="672" selection-end="672" vertical-scroll-proportion="0.36764705">
+        <state line="25" column="0" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jiaojiang/leetcode/AddTwoNumbers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jiaojiang/tripadvisor/DuplicatesFromBST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jiaojiang/tripadvisor/NthOrder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jiaojiang/misc/Queue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jiaojiang/misc/HousePainter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="8" selection-start="167" selection-end="167" vertical-scroll-proportion="0.13235295">
+          <folding>
+            <marker date="1375914479000" expanded="true" signature="244:397" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
