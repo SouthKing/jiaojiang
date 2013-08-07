@@ -1,4 +1,4 @@
-package jiaojiang.TripAdvisor;
+package jiaojiang.tripadvisor;
 
 import jiaojiang.twitter.BST;
 import jiaojiang.twitter.BinaryTree;

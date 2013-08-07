@@ -1,4 +1,4 @@
-package jiaojiang.TripAdvisor;
+package jiaojiang.tripadvisor;
 
 /**
  * @author: zhang
