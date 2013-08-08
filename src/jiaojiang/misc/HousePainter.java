@@ -6,6 +6,12 @@ package jiaojiang.misc;
  */
 public class HousePainter {
 
+    /*
+     *  There are "N" houses, where N is some integer. Each house can be painted in either Red, Green or Blue. The
+     * cost of coloring each house in each of the colors is different. Figure out how to color each house so no two
+     * adjacent houses have the same color and the total cost of coloring all the houses is as low as possible.
+    */
+
     // Assume H_{ic} is the cost of ith house with color c, T_{i, c} is the minimal total cost when ith house is painted with
     // color c. Then the minimal cost = min {
     //     H_{nR} + min{ T_{n - 1, G}, T_{n - 1, B} }
