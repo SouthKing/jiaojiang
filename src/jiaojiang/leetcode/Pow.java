@@ -5,6 +5,9 @@ package jiaojiang.leetcode;
  * @since: Apr 14, 2013 1:54:36 AM
  */
 public class Pow {
+    /*
+    Implement pow(x, n).
+     */
     public static double pow(double x, int n) {
         if (n == 0) {
             return 1.0;

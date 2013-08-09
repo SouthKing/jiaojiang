@@ -5,6 +5,14 @@ package jiaojiang.leetcode;
  * @since: Apr 14, 2013 11:55:57 PM
  */
 public class MergeTwoSortedArrays {
+    /*
+     Given two sorted integer arrays A and B, merge B into A as one sorted array.
+
+    Note:
+    You may assume that A has enough space to hold additional elements from B. The number of elements initialized
+    in A and B are m and n respectively.
+     */
+
     //You may assume that A has enough space to hold additional
     // elements from B. The number of elements initialized in
     // A and B are m and n respectively.
