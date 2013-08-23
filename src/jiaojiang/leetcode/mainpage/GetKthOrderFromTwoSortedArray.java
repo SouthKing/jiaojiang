@@ -1,4 +1,4 @@
-package jiaojiang.misc;
+package jiaojiang.leetcode.mainpage;
 
 /**
  * @author: mizhang
