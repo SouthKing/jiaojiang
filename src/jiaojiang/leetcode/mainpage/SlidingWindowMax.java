@@ -25,4 +25,8 @@ public class SlidingWindowMax {
         return null;
     }
 
+    public static void test() {
+
+    }
+
 }
