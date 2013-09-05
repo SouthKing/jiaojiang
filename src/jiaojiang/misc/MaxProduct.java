@@ -47,6 +47,14 @@ public class MaxProduct {
 
 
     public static int maxProduct2(int[] data) {
+
+        int start = 0;
+
+        for (int i = 0; i < data.length; i++) {
+            
+
+        }
+
         return 0;
     }
 
@@ -56,6 +64,13 @@ public class MaxProduct {
         System.out.println(maxProduct(new int[]{-2, -3, 0, -2,-40}));  //80
         System.out.println(maxProduct(new int[]{-2, 0, -3, 0, -2, 0, -40}));  //0
         System.out.println(maxProduct(new int[]{-2}));  //-2
+
+        System.out.println(maxProduct2(new int[]{6, -3, -10, 0, 2}));  //180
+        System.out.println(maxProduct2(new int[]{-1, -3, -10, 0, 60}));  //60
+        System.out.println(maxProduct2(new int[]{-2, -3, 0, -2,-40}));  //80
+        System.out.println(maxProduct2(new int[]{-2, 0, -3, 0, -2, 0, -40}));  //0
+        System.out.println(maxProduct2(new int[]{-2}));  //-2
+
     }
 
     public static void main(String[] args) {
