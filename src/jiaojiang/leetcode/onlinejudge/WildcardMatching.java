@@ -56,8 +56,50 @@ public class WildcardMatching {
     }
 
     public static boolean isMatchDP(String s, String p) {
+
+        s = "a" + s;
+        p = "a" + p;
+
+        int m = s.length(), n = p.length();
+        boolean[][] flags = new boolean[m][n];
+
+        //right boundary
+        if (p.charAt(n - 1) == '*') {
+            for (int i = m - 1; i >= 0; i--) {
+                flags[i][n - 1] = true;
+            }
+        } else {
+            for (int i = m - 2; i >= 0; i--) {
+                flags[i][n - 1] = false;
+            }
+            flags[m - 1][n - 1] = p.charAt(n - 1) == '?' || p.charAt(n - 1) == s.charAt(m - 1);
+        }
+
+        //bottom boundary
+        int count = p.charAt(n - 1) == '*' ? 0 : 1;                          // count of non-star chars
+        for (int i = n - 2; i >= 0; i--) {
+            if (p.charAt(i) == '*') {
+                flags[m - 1][i] = flags[m - 1][i + 1];
+            } else {
+                flags[m - 1][i] = count == 0 && (p.charAt(i) == '?' || p.charAt(i) == s.charAt(m - 1));
+                count++;
+            }
+        }
+
+        //rest
+        for (int i = m - 2; i >= 0; i--) {
+            for (int j = n - 2; j >= 0; j--) {
+                if (p.charAt(j) == '*') {
+                    flags[i][j] = flags[i + 1][j + 1] || flags[i][j + 1] || flags[i + 1][j];
+                } else if (p.charAt(j) == '?' || s.charAt(i) == p.charAt(j)) {
+                    flags[i][j] = flags[i + 1][j + 1];
+                } else {
+                    flags[i][j] = false;
+                }
+            }
+        }
         
-        return false;
+        return flags[0][0];
     }
 
     public static void test() {
@@ -74,6 +116,24 @@ public class WildcardMatching {
         System.out.println(isMatch("aab", "c*a*b")); //false
         System.out.println(isMatch("a", "aa")); //false
         System.out.println(isMatch("babaaababaabababbbbbbaabaabbabababbaababbaaabbbaaab", "***bba**a*bbba**aab**b")); //false
+        System.out.println(isMatch("c","*?*"));  //true
+
+        System.out.println("\n=================\n");
+
+        System.out.println(isMatchDP("","*"));  //true
+        System.out.println(isMatchDP("","***"));  //true
+        System.out.println(isMatchDP("a","a*"));  //true
+        System.out.println(isMatchDP("b", "?*?"));  //false
+        System.out.println(isMatchDP("aa","a"));  //false
+        System.out.println(isMatchDP("aa","aa")); //true
+        System.out.println(isMatchDP("aaa","aa")); //false
+        System.out.println(isMatchDP("aa", "*")); //true
+        System.out.println(isMatchDP("aa", "a*")); //true
+        System.out.println(isMatchDP("ab", "?*")); //true
+        System.out.println(isMatchDP("aab", "c*a*b")); //false
+        System.out.println(isMatchDP("a", "aa")); //false
+        System.out.println(isMatchDP("babaaababaabababbbbbbaabaabbabababbaababbaaabbbaaab", "***bba**a*bbba**aab**b")); //false
+        System.out.println(isMatchDP("c","*?*"));  //true
     }
 
     public static void main(String[] args) {
