@@ -46,31 +46,45 @@ public class MaxProduct {
     }
 
 
-    public static int maxProduct2(int[] data) {
+    public static long maxProduct2(int[] data) {
 
-        int start = 0;
+        int start = 0, firstNegative = Integer.MIN_VALUE, secondNegative = Integer.MIN_VALUE;
 
-        for (int i = 0; i < data.length; i++) {
-            
+        long firstProd = 0, secondProd = 0, lastProd = 0, prod = 1, maxProd = 0;
 
+        while (start < data.length) {
+            while (start < data.length && data[start] != 0) {
+                int i = start;
+                while (i < data.length && data[i] > 0) {
+                    prod *= data[i];
+                }
+
+                if (i > start) {
+                    firstProd = prod;
+                    firstNegative = data[i];
+                }
+
+            }
+            start++;
         }
 
-        return 0;
+        return prod;
     }
 
     public static void test() {
         System.out.println(maxProduct(new int[]{6, -3, -10, 0, 2}));  //180
         System.out.println(maxProduct(new int[]{-1, -3, -10, 0, 60}));  //60
-        System.out.println(maxProduct(new int[]{-2, -3, 0, -2,-40}));  //80
+        System.out.println(maxProduct(new int[]{-2, -3, 0, -2, -40}));  //80
         System.out.println(maxProduct(new int[]{-2, 0, -3, 0, -2, 0, -40}));  //0
         System.out.println(maxProduct(new int[]{-2}));  //-2
+        System.out.println(maxProduct(new int[]{9, 10, 15, 24, -1, 5, 6, 7, -2, 10, 19, 29}));  //1360800
 
         System.out.println(maxProduct2(new int[]{6, -3, -10, 0, 2}));  //180
         System.out.println(maxProduct2(new int[]{-1, -3, -10, 0, 60}));  //60
         System.out.println(maxProduct2(new int[]{-2, -3, 0, -2,-40}));  //80
         System.out.println(maxProduct2(new int[]{-2, 0, -3, 0, -2, 0, -40}));  //0
         System.out.println(maxProduct2(new int[]{-2}));  //-2
-
+        System.out.println(maxProduct2(new int[]{9, 10, 15, 24, -1, 5, 6, 7, -2, 10, 19, 29}));  //1360800
     }
 
     public static void main(String[] args) {
