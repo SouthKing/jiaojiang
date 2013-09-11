@@ -11,7 +11,10 @@ public class MaxRepeatingNumber {
     /*
     Find the number with max repeating times. The data array's length is n and the element of the data is in the interval [0, n)
     Need O(1) in space and O(n) in time
-     */
+
+    Note: if you are required to recover the data array, you can add N every time you adding the count, see
+    maxRepeatingNumberR(int[] data)
+    */
 
     public static int maxRepeatingNumber(int[] data) {
         for (int i = 0; i < data.length; i++) {
@@ -38,6 +41,35 @@ public class MaxRepeatingNumber {
         return maxIdx;
     }
 
+    public static int maxRepeatingNumberR(int[] data) {
+        Utils.printArray(data);
+
+        int maxIdx = 0, max = 0, n = data.length;
+
+        for (int i = 0; i < data.length; i++) {
+            int index = i, tmp = data[index];
+            while (tmp < n) {
+                index = tmp;
+                tmp = data[index];
+                data[index] += n;
+            }
+        }
+
+        //find the max repeating number and recover;
+        for (int i = 0; i < data.length; i++) {
+            int count = data[i]/n;
+            if (count > max) {
+                maxIdx = i;
+                max = count;
+            }
+            data[i] = data[i] % n;
+        }
+
+        Utils.printArray(data);
+
+        return maxIdx;
+    }
+
     public static void test() {
         Utils.println(maxRepeatingNumber(new int[]{1, 2, 4, 0, 2, 3, 4, 2, 3, 3, 3}), 3);
         Utils.println(maxRepeatingNumber(new int[]{1, 2, 3, 4, 5, 6, 0}), 1);
@@ -47,7 +79,18 @@ public class MaxRepeatingNumber {
         Utils.println(maxRepeatingNumber(new int[]{4, 4, 4, 1, 1, 1, 1}), 1);
     }
 
+    public static void testR() {
+        Utils.println(maxRepeatingNumberR(new int[]{1, 2, 4, 0, 2, 3, 4, 2, 3, 3, 3}), 3);
+        Utils.println(maxRepeatingNumberR(new int[]{1, 2, 3, 4, 5, 6, 0}), 1);
+        Utils.println(maxRepeatingNumberR(new int[]{0, 0, 0, 0, 0, 0, 1}), 0);
+        Utils.println(maxRepeatingNumberR(new int[]{0, 4, 4, 4, 4, 4, 4}), 4);
+        Utils.println(maxRepeatingNumberR(new int[]{4, 4, 4, 4, 4, 4, 4}), 4);
+        Utils.println(maxRepeatingNumberR(new int[]{4, 4, 4, 1, 1, 1, 1}), 1);
+
+    }
+
     public static void main(String[] args) {
-        test();
+//        test();
+        testR();
     }
 }
