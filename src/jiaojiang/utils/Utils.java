@@ -9,6 +9,12 @@ public class Utils {
         System.out.println("get: " + get.toString() + ", expected: " + expected.toString());
     }
 
+    public static void println(Object[] get, Object[] expected) {
+        for (int i = 0; i < get.length; i++) {
+            System.out.println("get: " + get[i].toString() + ", expected: " + expected[i].toString());
+        }
+    }
+
     public static void printArray(int[] data) {
         for (int i : data) {
             System.out.print(i + "\t");
