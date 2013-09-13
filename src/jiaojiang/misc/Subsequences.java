@@ -27,14 +27,14 @@ public class Subsequences {
         boolean[] ret = new boolean[s.length];
 
         //pre-process t
-
+        int[][] index = getIndex(t);
 
         //process array s
-        for (String str : s) {
-
+        for (int i = 0; i < s.length; i++) {
+            ret[i] =  process(index, s[i]);
         }
 
-        return null;
+        return ret;
     }
 
     private static int[][] getIndex(String t) {
@@ -45,18 +45,35 @@ public class Subsequences {
             }
         }
 
-//        for (char )
+        for (int i = 0, n = t.length(); i < n; i++) {
+            char c = t.charAt(i);
+            ret[c][i] = i;
+            for (int j = i - 1; j >= 0 && ret[c][j] == -1; ret[c][j] = i, j--);
+        }
 
         return ret;
     }
 
-    private static boolean process(int[][] index, int s) {
+    private static boolean process(int[][] index, String s) {
+        int currentIdx = -1;
+        for (char c : s.toCharArray()) {
+            if (++currentIdx >= index[0].length) {
+                return false;
+            }
+            currentIdx = index[c][currentIdx];
+            if (currentIdx == -1) {
+                return false;
+            }
+        }
 
-
-        return false;
+        return true;
     }
 
     public static void test() {
-        Utils.println(isSubsequence("abcdefg", "abc", "ag", "ga", "aa"), new boolean[] {true, true, false, false});
+        Utils.printBooleanArrayln(isSubsequence("abcdefg", "abc", "ag", "ga", "aa"), new boolean[] {true, true, false, false});
+    }
+
+    public static void main(String[] args) {
+        test();
     }
 }

@@ -9,9 +9,9 @@ public class Utils {
         System.out.println("get: " + get.toString() + ", expected: " + expected.toString());
     }
 
-    public static void println(Object[] get, Object[] expected) {
+    public static void printBooleanArrayln(boolean[] get, boolean[] expected) {
         for (int i = 0; i < get.length; i++) {
-            System.out.println("get: " + get[i].toString() + ", expected: " + expected[i].toString());
+            System.out.println("get: " + get[i] + ", expected: " + expected[i]);
         }
     }
 
