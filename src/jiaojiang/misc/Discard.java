@@ -21,39 +21,6 @@ public class Discard {
         return discard(s, 0);
     }
 
-    public static int discardDP(String s) {
-        int[] ret = new int[s.length() + 1];
-
-        for (int i = 0; i < ret.length - 1; i++) {
-            ret[i] = -1;
-        }
-        ret[ret.length - 1] = 0;
-
-        for (int i = s.length() - 1; i >= 0; ) {
-            int j = i;
-            while  (j >= 0 && j > i - 4 && s.charAt(i) == s.charAt(i)) {
-                j--;
-            }
-
-            if (j == i - 1) {
-                ret[i - 1] = -1;
-                if (s.charAt(i) - s.charAt(j) == 1 && j >= 1 && s.charAt(j) - s.charAt(j - 1) == 1) {
-                    ret[j - 1] = increment(ret[i + 1]);
-                    i = j - 2; // i = i - 3
-                }
-            } else if (j == i - 2){
-                ret[i - 1] = increment(ret[i + 1]);
-                i = j;
-            } else {
-                ret[i - 2] = min(ret[i - 2], increment(ret[i - 1]));
-                ret[i - 3] = increment(ret[i - 1]);
-                i = i - 3;
-            }
-        }
-
-        return ret[0];
-    }
-
     public static int discard(String s, int start) {
         if (start == s.length()) {
             return 0;
@@ -82,12 +49,43 @@ public class Discard {
                 }
                 return -1;
             }
+            return -1;
         } else if (index == start + 2) {
             return increment(discard(s, index));
         }
 
+        System.out.println("index : " + index + " start : " + start);
         //return min(discardNoAs(s, index - 1), discardNoAs(s, index)) + 1
         return min(discard(s, index - 1), discard(s, index)) + 1;
+    }
+
+    public static int discardDP(String s) {
+        int[] ret = new int[s.length() + 1];
+        ret[ret.length - 1] = 0;
+
+        for (int i = 0; i < ret.length - 1; i++) {
+            ret[i] = -1;
+        }
+
+        for (int i = s.length() - 1; i > 0; i--) {
+            int j = i;
+            while (j >= 0 && j > i - 4 && s.charAt(i) == s.charAt(j)) {
+                j--;
+            }
+
+            if (j == i - 1) {
+                if (i > 1 && s.charAt(i) - s.charAt(i - 1) == 1 && s.charAt(i - 1) - s.charAt(i - 2) == 1) {
+                    ret[i - 2] = min(ret[i - 2], increment(ret[i + 1]));
+                }
+            } else if (j == i - 2) {
+                ret[j + 1] = min(ret[j + 1], increment(ret[i + 1]));
+            } else {
+                ret[j + 1] = min(ret[j + 1], min(increment(ret[i + 1]), increment(ret[i])));
+                ret[j + 2] = min(ret[j + 2], j == i - 4 ? ret[j + 1] : increment(ret[i + 1]));
+            }
+        }
+
+        return ret[0];
     }
 
     private static int increment(int ret) {
@@ -106,11 +104,22 @@ public class Discard {
     }
 
     public static void test() {
-//        Utils.println(discard("abcddddefghijn".toUpperCase()), 5);
         Utils.println(discard("bbbbcde"), 2);
         Utils.println(discard("bcddddefghi"), 4);
+        Utils.println(discard("bcdddefghi"), -1);
+        Utils.println(discard("abcdddefgghi"), 4);
+        Utils.println(discard("abcdddefggghi"), 5);
+        Utils.println(discard("abcddddefgggghi"), 5);
+        Utils.println(discard("abceeeeefgggghi"), 5);
+
+        System.out.println("=========== DP ===========");
+
         Utils.println(discardDP("bbbbcde"), 2);
         Utils.println(discardDP("bcddddefghi"), 4);
+        Utils.println(discardDP("bcdddefghi"), -1);
+        Utils.println(discardDP("abcdddefgghi"), 4);
+        Utils.println(discardDP("abcdddefggghi"), 5);
+        Utils.println(discardDP("abceeeeefgggghi"), 5);
     }
 
     public static void main(String[] args) {
