@@ -13,11 +13,19 @@ public class Utils {
         for (int i = 0; i < get.length; i++) {
             System.out.println("get: " + get[i] + ", expected: " + expected[i]);
         }
+        System.out.println();
     }
 
     public static void printArray(int[] data) {
         for (int i : data) {
             System.out.print(i + "\t");
+        }
+        System.out.println();
+    }
+
+    public static void printIntArrayln(int[] get, int[] expected) {
+        for (int i = 0; i < get.length; i++) {
+            System.out.println("get: " + get[i] + ", expected: " + expected[i]);
         }
         System.out.println();
     }
