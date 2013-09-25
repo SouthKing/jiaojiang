@@ -4,6 +4,7 @@ import jiaojiang.utils.Utils;
 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Arrays;
 
 /**
  * @author: mizhang
@@ -51,8 +52,56 @@ public class MaxWordSegmentation {
         return nWords;
     }
 
-    public static void test(String s, Set<String> dict) {
-        System.out.println(maxWordSegment(s, dict));
+    public static int maxWordSegmentMem(String s, Set<String> dict) {
+        int[] mem = new int[s.length() + 1];
+        for (int i = 0; i < mem.length; i++) {
+            mem[i] = -1;
+        }
+
+        return maxWordSegmentMem(s, dict, 0, mem);
+    }
+
+    private static int maxWordSegmentMem(String s, Set<String> dict, int start, int[] mem) {
+        int l = s.length();
+
+        if (start == l) {
+            return mem[start] = 0;
+        }
+
+        if (mem[start] != -1) {
+            System.out.println("::::using mem value");
+            return mem[start];
+        }
+
+        for (int i = start; i < l; i++) {
+            int n;
+            if (dict.contains(s.substring(start, i + 1)) && (n = maxWordSegmentMem(s, dict, i + 1, mem)) != -1) {
+                mem[start] = Math.max(mem[start], n + 1);
+            }
+        }
+
+        return mem[start];
+    }
+
+    public static int maxWordSegmentDP(String s, Set<String> dict) {
+        int n = s.length(), index = n - 1;
+        int[] number = new int[n + 1];
+        number[n] = 1;
+
+        while (!dict.contains(s.substring(index, n))) {
+            index--;
+        }
+        number[index--] = 2;
+
+        for (int i = index; i >= 0; i--) {
+            for (int j = n; j > i; j--) {
+                if (number[j] != 0 && dict.contains(s.substring(i, j))) {
+                    number[i] = Math.max(number[i], number[j] + 1);
+                }
+            }
+        }
+
+        return number[0] - 1;
     }
 
     public static void test() {
@@ -65,8 +114,10 @@ public class MaxWordSegmentation {
         dict.add("ire");
         dict.add("ma");
         dict.add("man");
-        
-        test("fireman", dict);
+
+        System.out.println(maxWordSegment("fireman", dict));  //3
+        System.out.println(maxWordSegmentMem("fireman", dict));  //3
+        System.out.println(maxWordSegmentDP("fireman", dict));  //3
 
         dict.clear();
         dict.add("hell");
@@ -76,7 +127,9 @@ public class MaxWordSegmentation {
         dict.add("wor");
         dict.add("ld");
 
-        test("helloworld", dict); //3
+        System.out.println(maxWordSegment("helloworld", dict)); //3
+        System.out.println(maxWordSegmentMem("helloworld", dict)); //3
+        System.out.println(maxWordSegmentDP("helloworld", dict)); //3
     }
 
     public static void main(String[] args) {
