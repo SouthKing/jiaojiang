@@ -7,6 +7,13 @@ import java.util.Comparator;
  * @author: mizhang
  * @since: Oct 3, 2013 5:24:59 PM
  */
+
+/*
+ you have a circus that has many clowns and you need them stand vertically in a line, which means you one should stand
+ on the other's shoulder. The rule is, different clown has different height and weight, if clown A stands on clown B's
+ shoulder, A's weight and height should be less then B's. Given the list of clowns, find the maxmial clowns that could
+ line vertically
+ */
 public class MaxCircus {
     public static int maxCircus(int[][] weightsAndHeight) {
         Arrays.sort(weightsAndHeight, new Comparator<int[]>() {
