@@ -1,4 +1,4 @@
-package mitbbs.facebook;
+package companies.facebook.mitbbs;
 
 import jiaojiang.utils.Utils;
 
@@ -37,7 +37,7 @@ public class MaxWordSegmentation {
 
     private static int maxWordSegment(String s, int start, Set<String> dict) {
         int l = s.length(), nWords = -1;
-        
+
         if (start == l) {
             return 0;
         }

@@ -1,4 +1,4 @@
-package mitbbs.misc;
+package companies.misc.mitbbs;
 
 import jiaojiang.utils.Utils;
 

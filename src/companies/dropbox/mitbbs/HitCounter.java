@@ -1,4 +1,4 @@
-package mitbbs.dropbox;
+package companies.dropbox.mitbbs;
 
 import jiaojiang.utils.Utils;
 

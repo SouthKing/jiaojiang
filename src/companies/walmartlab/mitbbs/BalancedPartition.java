@@ -1,4 +1,4 @@
-package mitbbs.walmartlab;
+package companies.walmartlab.mitbbs;
 
 /**
  * @author: mizhang

@@ -1,4 +1,4 @@
-package experience.twitter;
+package companies.twitter.experience;
 
 import java.util.*;
 
@@ -41,7 +41,7 @@ public class WordSegment {
             System.out.println("======no segmentation found======");
             return;
         }
-        
+
         for (String str : ret) {
             System.out.print(str + " ");
         }

@@ -1,4 +1,4 @@
-package mitbbs.misc;
+package companies.misc.mitbbs;
 
 import jiaojiang.utils.Utils;
 
@@ -12,7 +12,7 @@ value
  */
 public class Knapsack {
     public static int maxValue(int[] weights, int[] values, int maxWeight) {
-        
+
 
         return 0;
     }

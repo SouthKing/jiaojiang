@@ -1,4 +1,4 @@
-package experience.shareaholic;
+package companies.shareaholic.experience;
 
 import java.util.List;
 import java.util.Iterator;
@@ -82,7 +82,7 @@ public class DependencyLib {
             while (current.getChildren() != null) {
                 current = current.getChildren().get(0);
             }
-            
+
             return node;
         }
 
