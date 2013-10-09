@@ -1,10 +1,10 @@
 package companies.tripadvisor.glassdoor;
 
-import jiaojiang.twitter.BST;
-import jiaojiang.twitter.BinaryTree;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import utils.BST;
+import utils.BinaryTree;
 
 /**
  * @author: zhang
