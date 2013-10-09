@@ -1,7 +1,6 @@
 package jiaojiang.leetcode.onlinejudge;
 
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * @author: zhang
