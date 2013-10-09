@@ -8,7 +8,7 @@ import java.util.HashMap;
  * @author: zhang
  * @since: May 9, 2013 11:05:04 PM
  */
-public class MinSubwindowString {
+public class MinWindowSubstring {
     /*
     Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
 

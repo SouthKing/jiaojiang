@@ -4,7 +4,7 @@ package jiaojiang.leetcode.onlinejudge;
  * @author: zhang
  * @since: Apr 14, 2013 1:32:55 AM
  */
-public class RemoveDuplicatesInSortedArray {
+public class RemoveDuplicatesFromSortedArray {
 
     /*
     Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
