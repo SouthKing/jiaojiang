@@ -1,6 +1,6 @@
 package companies.misc.mitbbs;
 
-import jiaojiang.utils.Utils;
+import utils.Utils;
 
 /**
  * @author: zhang

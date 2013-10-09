@@ -1,6 +1,6 @@
 package companies.dropbox.mitbbs;
 
-import jiaojiang.utils.Utils;
+import utils.Utils;
 
 import java.util.Random;
 import java.util.Date;

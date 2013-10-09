@@ -1,4 +1,4 @@
-package jiaojiang.utils;
+package utils;
 
 /**
  * @author: mizhang
