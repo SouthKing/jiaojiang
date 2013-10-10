@@ -57,9 +57,9 @@ public class LongestSubarray {
     }
 
     public static void test() {
-        Utils.printIntArrayln(longestRepeatingSubarray(new int[]{0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}), new int[]{13, 12});
-        Utils.printIntArrayln(longestRepeatingSubarray(new int[]{0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3}), new int[]{7, 6});
-        Utils.printIntArrayln(longestRepeatingSubarray(new int[]{0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 3, 3, 3, 3}), new int[]{0, 7});
+        Utils.printTestIntArrayln(longestRepeatingSubarray(new int[]{0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}), new int[]{13, 12});
+        Utils.printTestIntArrayln(longestRepeatingSubarray(new int[]{0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3}), new int[]{7, 6});
+        Utils.printTestIntArrayln(longestRepeatingSubarray(new int[]{0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 3, 3, 3, 3}), new int[]{0, 7});
     }
 
     public static void main(String[] args) {

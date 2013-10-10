@@ -70,7 +70,7 @@ public class Subsequences {
     }
 
     public static void test() {
-        Utils.printBooleanArrayln(isSubsequence("abcdefg", "abc", "ag", "ga", "aa"), new boolean[] {true, true, false, false});
+        Utils.printTestBooleanArrayln(isSubsequence("abcdefg", "abc", "ag", "ga", "aa"), new boolean[] {true, true, false, false});
     }
 
     public static void main(String[] args) {

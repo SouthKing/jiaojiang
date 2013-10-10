@@ -1,6 +1,11 @@
 package jiaojiang.leetcode.onlinejudge;
 
+import utils.Utils;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
 
 /**
  * @author: zhang
@@ -19,13 +24,38 @@ public class SubstringWithConcatecationOfAllWords {
     (order does not matter).
      */
     public static ArrayList<Integer> findSubstring(String S, String[] L) {
-        return null;
+        ArrayList<Integer> ret = new ArrayList<Integer>();
+        Map<String, Integer> wordCounter = new HashMap<String, Integer>();
+
+        int l = L[0].length();
+
+        for (String s : L) {
+            if (wordCounter.containsKey(s)) {
+                wordCounter.put(s, wordCounter.get(s) + 1);
+            } else {
+                wordCounter.put(s, 1);
+            }
+        }
+
+        for (int i = 0, n = S.length(); i < n - L.length * l + 1; i++) {
+            Map<String, Integer> tmp = new HashMap<String, Integer>(wordCounter);
+            int count = L.length, j = i;
+            String w;
+            while (count > 0 && tmp.containsKey(w = S.substring(j, j + l)) && tmp.get(w) != 0) {
+                tmp.put(w, tmp.get(w) - 1);
+                j += l;
+                count--;
+            }
+            if (count == 0) {
+                ret.add(i);
+            }
+        }
+
+        return ret;
     }
 
     public static void test() {
-        for (int i : findSubstring("barfoothefoobarman", new String[]{"foo", "bar"})) {
-            System.out.print(i + " ");
-        }
+        Utils.printTestIntListln(findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}), Arrays.asList(0, 9));
     }
 
     public static void main(String[] args) {
