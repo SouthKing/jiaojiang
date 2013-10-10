@@ -63,7 +63,7 @@ public class Strings {
 //            for (int j = 0; j < n + 1; j++) {
 //                System.out.print(flags[i][j] + " ");
 //            }
-//            System.out.println();
+//            System.out.printTestln();
 //        }
         return flags[m][n];
     }
@@ -124,19 +124,19 @@ public class Strings {
     public static void main(String[] argv) {
 //        String A = "sss xiao minmin";
 //        String B = "hello, world, this is xiao minmin";
-//        System.out.println(strstr(A, B));
-//        System.out.println(isConstructed(A, B));
+//        System.out.printTestln(strstr(A, B));
+//        System.out.printTestln(isConstructed(A, B));
 //        String A = "sitting";
 //        String B = "kitten";
 //        String A = "saturday";
 //        String B =  "sunday";
-//        System.out.println(getLevenshteinDistance(A.toCharArray(), B.toCharArray()));
-//        System.out.println(getLevenshteinDistance(A, B));
+//        System.out.printTestln(getLevenshteinDistance(A.toCharArray(), B.toCharArray()));
+//        System.out.printTestln(getLevenshteinDistance(A, B));
         String A = "abababaaa";
         String B = "ababaa";
 //        int[] pt = KMPPartialTable(A.toCharArray());
 //        for (int i : pt) {
-//            System.out.println(i);
+//            System.out.printTestln(i);
 //        }
         System.out.println(KMP(A.toCharArray(), B.toCharArray()));
         System.out.println(strstr(A, B));

@@ -40,8 +40,8 @@ public class BestTimeToBuyAndSellStockIII {
     }
 
     public static void test() {
-//        System.out.println(maxProfit(new int[]{2,1,4,5,2,9,7})); //  11
-//        System.out.println(maxProfit(new int[]{1,2,4,2,5,7,2,4,9,0,9})); // 17
+//        System.out.printTestln(maxProfit(new int[]{2,1,4,5,2,9,7})); //  11
+//        System.out.printTestln(maxProfit(new int[]{1,2,4,2,5,7,2,4,9,0,9})); // 17
         System.out.println(maxProfit(new int[]{2,1,2,1,0,0,1})); // 2
     }
 

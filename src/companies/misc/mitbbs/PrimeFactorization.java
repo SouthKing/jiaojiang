@@ -63,7 +63,7 @@ public class PrimeFactorization {
 //        for (int i : getUniquePrimeFactor(1002934563)) {
 //            System.out.print(i + "\t");
 //        }
-//        System.out.println();
+//        System.out.printTestln();
     }
 
     public static void testPF() {

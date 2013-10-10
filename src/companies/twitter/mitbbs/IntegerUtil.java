@@ -77,10 +77,10 @@ public class IntegerUtil {
     }
 
     public static void main(String[] args) {
-//        System.out.println(reserve(13579));
-//        System.out.println(reserve(-13579));
-//        System.out.println(powRec(2, 10));
-//        System.out.println(pow(2, 10));
+//        System.out.printTestln(reserve(13579));
+//        System.out.printTestln(reserve(-13579));
+//        System.out.printTestln(powRec(2, 10));
+//        System.out.printTestln(pow(2, 10));
         System.out.println(divide(-10, -2));
     }
 }

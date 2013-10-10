@@ -34,11 +34,11 @@ public class NextBST {
     public static void test() {
         TreeNode root = TreeNode.getSampleBST();
 
-        Utils.println(nextNode(root.leftChild), 7);
-        Utils.println(nextNode(root.leftChild.leftChild), 5);
-        Utils.println(nextNode(root.rightChild), 17);
-        Utils.println(nextNode(root.rightChild.leftChild), 16);
-        Utils.println(nextNode(root.rightChild.rightChild), 19);
+        Utils.printTestln(nextNode(root.leftChild), 7);
+        Utils.printTestln(nextNode(root.leftChild.leftChild), 5);
+        Utils.printTestln(nextNode(root.rightChild), 17);
+        Utils.printTestln(nextNode(root.rightChild.leftChild), 16);
+        Utils.printTestln(nextNode(root.rightChild.rightChild), 19);
     }
 
     public static void main(String[] args) {

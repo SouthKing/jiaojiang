@@ -1,7 +1,5 @@
 package jiaojiang.leetcode.onlinejudge;
 
-import jiaojiang.microsoft.MaxPair;
-
 /**
  * @author: mizhang@akamai.com
  */
@@ -47,7 +45,7 @@ public class String2Int {
     public static void main(String[] args) {
         String s = "10557266014";
         System.out.println(atoi(s));
-//        System.out.println(Integer.MAX_VALUE);
-//        System.out.println(Integer.MIN_VALUE);
+//        System.out.printTestln(Integer.MAX_VALUE);
+//        System.out.printTestln(Integer.MIN_VALUE);
     }
 }

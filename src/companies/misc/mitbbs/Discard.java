@@ -104,22 +104,22 @@ public class Discard {
     }
 
     public static void test() {
-        Utils.println(discard("bbbbcde"), 2);
-        Utils.println(discard("bcddddefghi"), 4);
-        Utils.println(discard("bcdddefghi"), -1);
-        Utils.println(discard("abcdddefgghi"), 4);
-        Utils.println(discard("abcdddefggghi"), 5);
-        Utils.println(discard("abcddddefgggghi"), 5);
-        Utils.println(discard("abceeeeefgggghi"), 5);
+        Utils.printTestln(discard("bbbbcde"), 2);
+        Utils.printTestln(discard("bcddddefghi"), 4);
+        Utils.printTestln(discard("bcdddefghi"), -1);
+        Utils.printTestln(discard("abcdddefgghi"), 4);
+        Utils.printTestln(discard("abcdddefggghi"), 5);
+        Utils.printTestln(discard("abcddddefgggghi"), 5);
+        Utils.printTestln(discard("abceeeeefgggghi"), 5);
 
         System.out.println("=========== DP ===========");
 
-        Utils.println(discardDP("bbbbcde"), 2);
-        Utils.println(discardDP("bcddddefghi"), 4);
-        Utils.println(discardDP("bcdddefghi"), -1);
-        Utils.println(discardDP("abcdddefgghi"), 4);
-        Utils.println(discardDP("abcdddefggghi"), 5);
-        Utils.println(discardDP("abceeeeefgggghi"), 5);
+        Utils.printTestln(discardDP("bbbbcde"), 2);
+        Utils.printTestln(discardDP("bcddddefghi"), 4);
+        Utils.printTestln(discardDP("bcdddefghi"), -1);
+        Utils.printTestln(discardDP("abcdddefgghi"), 4);
+        Utils.printTestln(discardDP("abcdddefggghi"), 5);
+        Utils.printTestln(discardDP("abceeeeefgggghi"), 5);
     }
 
     public static void main(String[] args) {

@@ -77,7 +77,7 @@ public class Search2DMatrix {
     }
 
     public static void main(String[] args) {
-//        System.out.println(binarySearch(new int[]{1, 3, 5, 7, 9, 10}, 11));
+//        System.out.printTestln(binarySearch(new int[]{1, 3, 5, 7, 9, 10}, 11));
         test();
 
     }

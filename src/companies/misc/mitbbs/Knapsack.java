@@ -32,8 +32,8 @@ public class Knapsack {
     }
 
     public static void test() {
-        Utils.println(maxValue(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 9, 13, 15}, 5), 16);
-        Utils.println(maxValue(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 9, 13, 15}, 7), 22);
+        Utils.printTestln(maxValue(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 9, 13, 15}, 5), 16);
+        Utils.printTestln(maxValue(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 9, 13, 15}, 7), 22);
     }
 
     public static void main(String[] args) {

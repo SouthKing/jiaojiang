@@ -79,8 +79,8 @@ public class DiscardII {
     }
 
     public static void test() {
-//        Utils.println(discard("abcddddefghijn".toUpperCase()), 5);
-        Utils.println(discardNoAs("bbbbcde", 0), 2);
+//        Utils.printTestln(discard("abcddddefghijn".toUpperCase()), 5);
+        Utils.printTestln(discardNoAs("bbbbcde", 0), 2);
     }
 
     public static void main(String[] args) {

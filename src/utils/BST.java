@@ -146,8 +146,8 @@ public class BST extends BinaryTree<Integer> {
 //        BST bst = constructSampleBST();
 //        BST nonBst = constructSampleNonBST();
 //        bst.inOrder();
-//        System.out.println(bst.isBST());
-//        System.out.println(nonBst.isBST());
+//        System.out.printTestln(bst.isBST());
+//        System.out.printTestln(nonBst.isBST());
 
 //        BST bst = constructSampleBST();
 //        bst.inOrder();

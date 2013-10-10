@@ -102,8 +102,8 @@ public class SearchForARange {
     }
 
     public static void test() {
-//        System.out.println(findLeft(new int[]{5, 7, 7, 8, 8, 10}, 8));
-//        System.out.println(findRight(new int[]{5, 7, 7, 8, 8, 10}, 8));
+//        System.out.printTestln(findLeft(new int[]{5, 7, 7, 8, 8, 10}, 8));
+//        System.out.printTestln(findRight(new int[]{5, 7, 7, 8, 8, 10}, 8));
         int[] range = searchRange(new int[]{5, 7, 7, 8, 8, 10}, 8);
         System.out.println(range[0] + " : " + range[1]);
 

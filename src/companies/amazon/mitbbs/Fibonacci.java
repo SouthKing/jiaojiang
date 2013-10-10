@@ -36,7 +36,7 @@ public class Fibonacci {
     }
 
     public static void main(String[] argv) {
-//        System.out.println(getFibonacci(10));
+//        System.out.printTestln(getFibonacci(10));
         System.out.println(getFibonacciIterative(10));
     }
 }

@@ -90,7 +90,7 @@ public class KthOrder {
 
     public static void main(String[] args) {
 //        int[] data = {3, 2, 9, 4, 7, 19, 11};
-//        System.out.println(findKthOrder(data, 4));
+//        System.out.printTestln(findKthOrder(data, 4));
 
         int[] data1 = {1, 7, 19, 22, 38};
         int[] data2 = {2, 8, 11, 18, 25, 39, 45};

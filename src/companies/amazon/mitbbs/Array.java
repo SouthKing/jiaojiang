@@ -190,20 +190,20 @@ public class Array {
 
 //        int[] noDup = removeDuplicateNoSet(integers);
 //        for (int i : noDup) {
-//            System.out.println(i);
+//            System.out.printTestln(i);
 //        }
 //        interleave(integers);
 //        for (int i : integers) {
-//            System.out.println(i);
+//            System.out.printTestln(i);
 //        }
 //
 //        double[] a = {1, 4, 7, 13, 14, 18, 20, 30};
 //        double[] b = {2, 3, 5, 8, 9, 12, 16, 29};
-//        System.out.println(findMedian(a, b));
+//        System.out.printTestln(findMedian(a, b));
 
 //        int[] a = {16, 18, 20, 22, 2, 4, 6, 8, 10, 12, 14};
 //        for (int i = 0; i < a.length; i++) {
-//            System.out.println(rotatedBinarySearch(a, a[i]));
+//            System.out.printTestln(rotatedBinarySearch(a, a[i]));
 //        }
 
 //        int[][] as = {{1,2,3,4,17}, {5,6,7,8,18},{9,10,11,12,19},{13,14,15,16,20}, {21,22,23,24,25}};
@@ -213,17 +213,17 @@ public class Array {
 //            for (int j = 0; j < as[i].length; j++) {
 //                System.out.print(as[i][j] + " ");
 //            }
-//            System.out.println();
+//            System.out.printTestln();
 //        }
 //
-//        System.out.println("");
+//        System.out.printTestln("");
 //        rotate(as);
 //
 //        for (int i = 0; i < as.length; i++) {
 //            for (int j = 0; j < as[i].length; j++) {
 //                System.out.print(as[i][j] + " ");
 //            }
-//            System.out.println();
+//            System.out.printTestln();
 //        }
     }
 }

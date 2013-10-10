@@ -71,21 +71,21 @@ public class MaxRepeatingNumber {
     }
 
     public static void test() {
-        Utils.println(maxRepeatingNumber(new int[]{1, 2, 4, 0, 2, 3, 4, 2, 3, 3, 3}), 3);
-        Utils.println(maxRepeatingNumber(new int[]{1, 2, 3, 4, 5, 6, 0}), 1);
-        Utils.println(maxRepeatingNumber(new int[]{0, 0, 0, 0, 0, 0, 1}), 0);
-        Utils.println(maxRepeatingNumber(new int[]{0, 4, 4, 4, 4, 4, 4}), 4);
-        Utils.println(maxRepeatingNumber(new int[]{4, 4, 4, 4, 4, 4, 4}), 4);
-        Utils.println(maxRepeatingNumber(new int[]{4, 4, 4, 1, 1, 1, 1}), 1);
+        Utils.printTestln(maxRepeatingNumber(new int[]{1, 2, 4, 0, 2, 3, 4, 2, 3, 3, 3}), 3);
+        Utils.printTestln(maxRepeatingNumber(new int[]{1, 2, 3, 4, 5, 6, 0}), 1);
+        Utils.printTestln(maxRepeatingNumber(new int[]{0, 0, 0, 0, 0, 0, 1}), 0);
+        Utils.printTestln(maxRepeatingNumber(new int[]{0, 4, 4, 4, 4, 4, 4}), 4);
+        Utils.printTestln(maxRepeatingNumber(new int[]{4, 4, 4, 4, 4, 4, 4}), 4);
+        Utils.printTestln(maxRepeatingNumber(new int[]{4, 4, 4, 1, 1, 1, 1}), 1);
     }
 
     public static void testR() {
-        Utils.println(maxRepeatingNumberR(new int[]{1, 2, 4, 0, 2, 3, 4, 2, 3, 3, 3}), 3);
-        Utils.println(maxRepeatingNumberR(new int[]{1, 2, 3, 4, 5, 6, 0}), 1);
-        Utils.println(maxRepeatingNumberR(new int[]{0, 0, 0, 0, 0, 0, 1}), 0);
-        Utils.println(maxRepeatingNumberR(new int[]{0, 4, 4, 4, 4, 4, 4}), 4);
-        Utils.println(maxRepeatingNumberR(new int[]{4, 4, 4, 4, 4, 4, 4}), 4);
-        Utils.println(maxRepeatingNumberR(new int[]{4, 4, 4, 1, 1, 1, 1}), 1);
+        Utils.printTestln(maxRepeatingNumberR(new int[]{1, 2, 4, 0, 2, 3, 4, 2, 3, 3, 3}), 3);
+        Utils.printTestln(maxRepeatingNumberR(new int[]{1, 2, 3, 4, 5, 6, 0}), 1);
+        Utils.printTestln(maxRepeatingNumberR(new int[]{0, 0, 0, 0, 0, 0, 1}), 0);
+        Utils.printTestln(maxRepeatingNumberR(new int[]{0, 4, 4, 4, 4, 4, 4}), 4);
+        Utils.printTestln(maxRepeatingNumberR(new int[]{4, 4, 4, 4, 4, 4, 4}), 4);
+        Utils.printTestln(maxRepeatingNumberR(new int[]{4, 4, 4, 1, 1, 1, 1}), 1);
 
     }
 

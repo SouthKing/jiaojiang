@@ -49,9 +49,9 @@ public class AddBinary {
     }
 
     public static void main(String[] args) {
-//        System.out.println((char)('0' + ('1' ^ '1')));
-//        System.out.println((char)('0' + ('1' ^ '0')));
-//        System.out.println((char)('0' + ('0' ^ '0')));
+//        System.out.printTestln((char)('0' + ('1' ^ '1')));
+//        System.out.printTestln((char)('0' + ('1' ^ '0')));
+//        System.out.printTestln((char)('0' + ('0' ^ '0')));
         test();
     }
 }

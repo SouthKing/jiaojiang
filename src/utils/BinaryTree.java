@@ -389,11 +389,11 @@ public class BinaryTree<T> {
     public static void testTraversal() {
         BinaryTree<Integer> binaryTree = getSampleBinaryTree();
 //        binaryTree.inOrder();
-//        System.out.println("======");
+//        System.out.printTestln("======");
 //        binaryTree.inOrderIterative();
 //
 //        binaryTree.preOrder();
-//        System.out.println("======");
+//        System.out.printTestln("======");
 //        binaryTree.preOrdreIterative();
 
         binaryTree.postOrder();
@@ -424,7 +424,7 @@ public class BinaryTree<T> {
 //        testTraversal();
 //        testMirror();
         testReconstruct();
-//        System.out.println(binaryTree.LCA(binaryTree.getRoot().leftChild.rightChild, binaryTree.getRoot().rightChild.rightChild).getValue());
+//        System.out.printTestln(binaryTree.LCA(binaryTree.getRoot().leftChild.rightChild, binaryTree.getRoot().rightChild.rightChild).getValue());
 //        binaryTree.bsf();
     }
 

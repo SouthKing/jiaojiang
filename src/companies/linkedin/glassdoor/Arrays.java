@@ -86,10 +86,10 @@ public class Arrays {
 
     public static void main(String[] argv) {
 //        int[] array = new int[] {1, 1, 4, 5, 8, 10};
-//        System.out.println(isSum(array, 16));
+//        System.out.printTestln(isSum(array, 16));
 //        shuffle(array);
 //        Sorting.print(array);
-//        System.out.println(kthOrder(array, 2));
+//        System.out.printTestln(kthOrder(array, 2));
 
         int[][] array = {{1, 2, 3, 11}, {4, 5, 6, 12}, {7, 8, 9, 13}};
         printPaths(array);

@@ -84,11 +84,11 @@ public class BinarySearchTree extends BinaryTree{
 //        BinaryTree bt = new BinaryTree();
 //        bst.inOrderTraverse();
 //        bst.levelTraverse();
-//        System.out.println(isBST(bst.root));
-//        System.out.println(isBST(bt.root));
+//        System.out.printTestln(isBST(bst.root));
+//        System.out.printTestln(isBST(bt.root));
 //        Node target = new Node(Integer.MAX_VALUE);
-//        System.out.println(getNthMax(bst.root, 8, target));
-//        System.out.println(target.value);
+//        System.out.printTestln(getNthMax(bst.root, 8, target));
+//        System.out.printTestln(target.value);
 
 //        bst.iterativeInOrderTraverse();
 //        bst.iterativePostOrderTraverse();

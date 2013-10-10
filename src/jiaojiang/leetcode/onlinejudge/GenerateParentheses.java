@@ -162,7 +162,7 @@ public class GenerateParentheses {
 //
 //        for (String s : s4) {
 //            if (!set.contains(s)) {
-//                System.out.println(s);
+//                System.out.printTestln(s);
 //            }
 //        }
 
