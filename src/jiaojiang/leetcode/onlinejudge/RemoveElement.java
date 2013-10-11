@@ -4,6 +4,11 @@ package jiaojiang.leetcode.onlinejudge;
  * @author: mizhang@akamai.com
  */
 public class RemoveElement {
+    /*
+    Given an array and a value, remove all instances of that value in place and return the new length.
+
+    The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+     */
     public static int removeElement(int[] A, int elem) {
         int j = A.length - 1;
         while (j >= 0 && A[j] == elem) {
