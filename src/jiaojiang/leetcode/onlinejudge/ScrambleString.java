@@ -70,8 +70,36 @@ public class ScrambleString {
         return false;
     }
 
+    /*
+    dp[i][j][k] represent the string s1 start from i, string s2 starting from j, both with length k + 1 is Scramble.
+
+    dp[i][j][k] = OR (m = 0, 1, ..., k - 1)
+                  dp[i][j][m] && dp[i + m + 1][j + m + 1][k - m - 1] || dp[i][j + k - m][m] && dp[i + m + 1][j][k - m -1]
+     */
     public static boolean isScrambleDP(String s1, String s2) {
-        return false;
+        int l = s1.length();
+        if (l != s2.length()) {
+            return false;
+        }
+
+        boolean[][][] dp = new boolean[l][l][l];
+
+        for (int i = 0; i < l; i++) {
+            for (int j = 0; j < l; j++) {
+                dp[i][j][0] = s1.charAt(i) == s2.charAt(j);
+            }
+        }
+
+        for (int k = 1; k < l; k++) {
+            for (int i = 0; i < l - k; i++) {
+                for (int j = 0; j < l - k; j++) {
+                    for (int m = 0; m < k; m++) {
+                        dp[i][j][k] = dp[i][j][k] || dp[i][j][m] && dp[i + m + 1][j + m + 1][k - m - 1] || dp[i][j + k - m][m] && dp[i + m + 1][j][k - m -1];
+                    }
+                }
+            }
+        }
+        return dp[0][0][l - 1];
     }
 
     public static void test() {
