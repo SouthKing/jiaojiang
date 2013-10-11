@@ -1,6 +1,8 @@
 package jiaojiang.leetcode.onlinejudge;
 
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
 
 /**
  * @author: mizhang
@@ -28,8 +30,44 @@ public class BinaryTreeLevelOrderTraversalII {
     ]
      */
     public static ArrayList<ArrayList<Integer>> levelOrderBottom(TreeNode root) {
+        ArrayList<ArrayList<Integer>> ret = new ArrayList<ArrayList<Integer>>();
 
-        return null;
+        if (root == null) {
+            return ret;
+        }
+
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        Queue<TreeNode> q2 = new LinkedList<TreeNode>();
+
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            ArrayList<Integer> values = new ArrayList<Integer>();
+            while (! q.isEmpty()) {
+                TreeNode node = q.remove();
+
+                values.add(node.val);
+
+                if (node.left != null) {
+                    q2.add(node.left);
+                }
+
+                if (node.right != null) {
+                    q2.add(node.right);
+                }
+            }
+            Queue<TreeNode> ref = q2;
+            q2 = q;
+            q = ref;
+            ret.add(values);
+        }
+
+        for (int i = 0, n = ret.size(); i < n / 2; i++) {
+            ArrayList<Integer> tmp = ret.get(i);
+            ret.set(i, ret.get(n - i - 1));
+            ret.set(n - i - 1, tmp);
+        }
+
+        return ret;
     }
-    
 }

@@ -20,7 +20,6 @@ public class LargestRectangleInHistgram {
     return 10.
      */
 
-
     public static int largestRectangleArea(int[] height) {
         Stack<Integer> stack = new Stack<Integer>();
         int[] leftBoundary = new int[height.length];

@@ -1,5 +1,7 @@
 package jiaojiang.leetcode.onlinejudge;
 
+import utils.Utils;
+
 import java.util.Queue;
 import java.util.LinkedList;
 
@@ -42,6 +44,30 @@ public class MinimalDepthOfBinaryTree {
         return depth;
     }
 
+        public static int minDepth2(TreeNode root) {
+        return minDepth2(root, 0);
+    }
+
+    public static int minDepth2(TreeNode root, int i) {
+        if(root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return i + 1;
+        }
+
+        if (root.left == null) {
+            return minDepth2(root.right, i + 1);
+        }
+
+        if (root.right == null) {
+            return minDepth2(root.left, i + 1);
+        }
+
+        return Math.min(minDepth2(root.left, i + 1), minDepth2(root.right,  i + 1));
+    }
+
     public static void test() {
         TreeNode root = new TreeNode(1);
 
@@ -52,7 +78,8 @@ public class MinimalDepthOfBinaryTree {
         root.right.left = new TreeNode(5);
         root.right.right = new TreeNode(5);
 
-        System.out.println(minDepth(root));
+        Utils.printTestln(minDepth(root), 3);
+        Utils.printTestln(minDepth2(root), 3);
     }
 
     public static void main(String[] args) {

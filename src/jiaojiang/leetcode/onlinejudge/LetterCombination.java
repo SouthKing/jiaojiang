@@ -8,6 +8,14 @@ import java.util.List;
  * @since: Apr 13, 2013 12:08:12 AM
  */
 public class LetterCombination {
+    /*
+    Given a digit string, return all possible letter combinations that the number could represent.
+
+    A mapping of digit to letters (just like on the telephone buttons) is given below.
+
+    Input:Digit string "23"
+    Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+     */
 
     public static List<String> letterCombinations(String digits) {
         String[] mapping = {"", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
