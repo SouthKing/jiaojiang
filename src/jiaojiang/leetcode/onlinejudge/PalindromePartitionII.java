@@ -44,10 +44,10 @@ public class PalindromePartitionII {
 
     public static void test() {
         System.out.println("get: " +  minCut("aab") + ", expected: " + "1"); // 1
-        System.out.println("get: " +  minCut("ababababababababababababcbabababababababababababa") + ", expected: " + "0"); // 1
+        System.out.println("get: " +  minCut("ababababababababababababcbabababababababababababa") + ", expected: " + "0"); // 0
 
         System.out.println("get: " +  minCutDP("aab") + ", expected: " + "1"); // 1
-        System.out.println("get: " +  minCutDP("ababababababababababababcbabababababababababababa") + ", expected: " + "0"); // 1
+        System.out.println("get: " +  minCutDP("ababababababababababababcbabababababababababababa") + ", expected: " + "0"); // 0
     }
 
     public static void main(String[] args) {
