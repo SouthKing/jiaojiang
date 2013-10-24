@@ -1,6 +1,6 @@
 package jiaojiang.leetcode.onlinejudge;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * @author: zhang
@@ -30,6 +30,22 @@ public class UndirectedGraphNode {
     }
 
     public void print() {
-        
+        Set<UndirectedGraphNode> set = new HashSet<UndirectedGraphNode>();
+        Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
+
+        queue.add(this);
+
+        while (!queue.isEmpty()) {
+            UndirectedGraphNode node = queue.remove();
+            System.out.println(node.label);
+            if (!set.contains(node)) {
+                set.add(node);
+            }
+            for (UndirectedGraphNode n : node.neighbors) {
+                if (!set.contains(n)) {
+                    queue.add(n);
+                }
+            }
+        }
     }
 }

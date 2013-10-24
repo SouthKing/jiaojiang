@@ -1,8 +1,7 @@
 package jiaojiang.leetcode.onlinejudge;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
 
 /**
  * @author: zhang
@@ -45,16 +44,35 @@ public class CloneGraph {
         UndirectedGraphNode cloneNode = new UndirectedGraphNode(node.label);
         map.put(node, cloneNode);
 
+        Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
+        queue.add(node);
 
-        return null;
+        while (!queue.isEmpty()) {
+            UndirectedGraphNode n = queue.remove();
+            for (UndirectedGraphNode neighbor : n.neighbors) {
+                if (!map.containsKey(neighbor)) {
+                    cloneNode = new UndirectedGraphNode(neighbor.label);
+                    map.put(neighbor, cloneNode);
+                    queue.add(neighbor);
+                }
+
+                map.get(n).neighbors.add(map.get(neighbor));
+            }
+        }
+
+        return map.get(node);
     }
 
     public static void test() {
+        UndirectedGraphNode node = UndirectedGraphNode.constructGraph();
 
-        
+        node.print();
+        System.out.println("===========");
+
+        cloneGraph(node).print();
     }
 
-
-
-
+    public static void main(String[] args) {
+        test();
+    }
 }
