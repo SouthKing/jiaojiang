@@ -65,8 +65,8 @@ public class CloneGraph {
 
     public static void test() {
         UndirectedGraphNode node = UndirectedGraphNode.constructGraph();
-
         node.print();
+        
         System.out.println("===========");
 
         cloneGraph(node).print();
