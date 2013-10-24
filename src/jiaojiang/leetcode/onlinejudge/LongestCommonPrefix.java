@@ -5,6 +5,9 @@ package jiaojiang.leetcode.onlinejudge;
  * @since: Apr 12, 2013 11:51:42 PM
  */
 public class LongestCommonPrefix {
+    /*
+    Write a function to find the longest common prefix string amongst an array of strings
+     */
      public static String longestCommonPrefix(String[] strs) {
          if (strs.length == 0) {
              return "";

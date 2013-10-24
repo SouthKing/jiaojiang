@@ -4,6 +4,9 @@ package jiaojiang.leetcode.onlinejudge;
  * @author: mizhang@akamai.com
  */
 public class Divide {
+    /*
+    Divide two integers without using multiplication, division and mod operator
+     */
 
     public static int divide(int dividend, int divisor) {
         long longDividend = dividend > 0 ? dividend : -(long)dividend;
