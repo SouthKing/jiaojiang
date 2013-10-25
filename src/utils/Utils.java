@@ -8,12 +8,20 @@ import java.util.List;
  */
 public class Utils {
     public static void printTestln(Object get, Object expected) {
-        System.out.println("get: " + get.toString() + ", expected: " + expected.toString());
+        if (get.equals(expected)) {
+            System.out.println("get: " + get.toString() + ", expected: " + expected.toString());
+        } else {
+            System.out.println("[ERROR] get: " + get.toString() + ", expected: " + expected.toString());
+        }
     }
 
     public static void printTestBooleanArrayln(boolean[] get, boolean[] expected) {
         for (int i = 0; i < get.length; i++) {
-            System.out.println("get: " + get[i] + ", expected: " + expected[i]);
+            if (get == expected) {
+                System.out.println("get: " + get[i] + ", expected: " + expected[i]);
+            } else {
+                System.out.println("[ERROR] get: " + get[i] + ", expected: " + expected[i]);
+            }
         }
         System.out.println();
     }
@@ -35,11 +43,15 @@ public class Utils {
     public static void printTestIntArrayln(int[] get, int[] expected) {
         int getLength = get.length, expectedLength = expected.length, length;
         if (getLength != expectedLength) {
-            System.out.println("Integer Array Lengths do not match: " + getLength + " vs " + expected);
+            System.out.println("[ERROR] Integer Array Lengths do not match: " + getLength + " vs " + expected);
         }
         length = Math.min(getLength, expectedLength);
         for (int i = 0; i < length; i++) {
-            System.out.println("get: " + get[i] + ", expected: " + expected[i]);
+            if (get[i] == expected[i]) {
+                System.out.println("get: " + get[i] + ", expected: " + expected[i]);
+            } else {
+                System.out.println("[ERROR] get: " + get[i] + ", expected: " + expected[i]);
+            }
         }
         System.out.println();
     }
@@ -47,11 +59,15 @@ public class Utils {
     public static void printTestIntListln(List<Integer> get, List<Integer> expected) {
         int getSize = get.size(), expectedSize = expected.size(), size;
         if (getSize != expectedSize) {
-            System.out.println("Integer List Sizes do not match: " + getSize + " vs " + expected);
+            System.out.println("[ERROR] Integer List Sizes do not match: " + getSize + " vs " + expected);
         }
         size = Math.min(getSize, expectedSize);
         for (int i = 0; i < size; i++) {
-            System.out.println("get: " + get.get(i) + ", expected: " + expected.get(i));
+            if (get.get(i) == expected.get(i)) {
+                System.out.println("get: " + get.get(i) + ", expected: " + expected.get(i));
+            } else {
+                System.out.println("[ERROR] get: " + get.get(i) + ", expected: " + expected.get(i));
+            }
         }
         System.out.println();
     }
