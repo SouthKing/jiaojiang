@@ -44,8 +44,15 @@ public class Candy {
         return count[0];
     }
 
+    /*
+       parition numbers into decreasing groups:
+       (1), (5, 2), (4, 2, 1), (6, 4)
+       The first number of each group is the last number of last group plus 1
+       if the number of element is greater than 1, say 3 and the last number of last group is 5, then each give below candies: 
+       5 + 1, 2, 1
+     */
     public static int candy2(int[] ratings) {
-        int count = 0, leftBounardy = 0;
+        int count = 0, leftBoundary = 0;
 
         for (int i = 0; i < ratings.length; i++) {
             int start = i, max;
@@ -56,14 +63,14 @@ public class Candy {
             if (start > 0 && ratings[start - 1] == ratings[start]) {
                 if (i == start) {
                     count++;
+                    leftBoundary = 1;
                     continue;
                 }
-                max = Math.max(leftBounardy, i - start + 1);
+                max = Math.max(leftBoundary, i - start + 1);
             } else {
-                max = Math.max(leftBounardy + 1, i - start + 1);
+                max = Math.max(leftBoundary + 1, i - start + 1);
             }
-
-            leftBounardy = max - (i - start);
+            leftBoundary = i == start ? max : 1;
             count += max + ((i - start) * (i - start + 1) >>> 1);
         }
 
@@ -71,7 +78,7 @@ public class Candy {
     }
 
     public static void test() {
-        Utils.printTestln(candy(new int[]{1, 1, 2, 4, 5, 6, 4}), 19);
+        Utils.printTestln(candy(new int[]{1, 1, 2, 4, 5, 6, 4}), 17);
         Utils.printTestln(candy(new int[]{1, 5, 2, 4, 2, 6, 4}), 10);
         Utils.printTestln(candy(new int[]{2, 2, 1}), 4);
         Utils.printTestln(candy(new int[]{1, 2, 2, 1}), 6);
@@ -80,10 +87,12 @@ public class Candy {
         Utils.printTestln(candy(new int[]{1, 2, 3, 4}), 10);
         Utils.printTestln(candy(new int[]{4, 3, 2, 1}), 10);
         Utils.printTestln(candy(new int[]{4, 2, 3, 4, 1}), 9);
+        Utils.printTestln(candy(new int[]{58, 21, 72, 77, 48, 9, 38, 71, 68, 77, 82}), 22);
+        Utils.printTestln(candy(new int[]{58, 21, 72, 77, 48, 9, 38, 71, 68, 77, 82, 47, 25, 94, 89, 54, 26, 54, 54, 99}), 40);
     }
 
     public static void test2() {
-        Utils.printTestln(candy2(new int[]{1, 1, 2, 4, 5, 6, 4}), 19);
+        Utils.printTestln(candy2(new int[]{1, 1, 2, 4, 5, 6, 4}), 17);
         Utils.printTestln(candy2(new int[]{1, 5, 2, 4, 2, 6, 4}), 10);
         Utils.printTestln(candy2(new int[]{2, 2, 1}), 4);
         Utils.printTestln(candy2(new int[]{1, 2, 2, 1}), 6);
@@ -92,11 +101,13 @@ public class Candy {
         Utils.printTestln(candy2(new int[]{1, 2, 3, 4}), 10);
         Utils.printTestln(candy2(new int[]{4, 3, 2, 1}), 10);
         Utils.printTestln(candy2(new int[]{4, 2, 3, 4, 1}), 9);
+        Utils.printTestln(candy2(new int[]{58, 21, 72, 77, 48, 9, 38, 71, 68, 77, 82}), 22);
+        Utils.printTestln(candy2(new int[]{58, 21, 72, 77, 48, 9, 38, 71, 68, 77, 82, 47, 25, 94, 89, 54, 26, 54, 54, 99}), 40);
     }
 
     public static void main(String[] args) {
-//        test();
-//        System.out.println("\n----------------\n");
+        test();
+        System.out.println("\n----------------\n");
         test2();
     }
 }
