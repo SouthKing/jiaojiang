@@ -33,6 +33,13 @@ public class Utils {
         System.out.println();
     }
 
+    public static void printList(List data) {
+        for (Object o : data) {
+            System.out.print(o.toString() + "\t");
+        }
+        System.out.println("");
+    }
+
     public static void printIntList(List<Integer> data) {
         for (int i : data) {
             System.out.print(i + "\t");
