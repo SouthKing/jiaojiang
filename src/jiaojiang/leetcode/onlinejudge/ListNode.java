@@ -20,4 +20,16 @@ public class ListNode {
             }
             System.out.println(next.val);
     }
+
+    public static ListNode constructList(int n) {
+        ListNode head = new ListNode(0);
+        ListNode node = head;
+
+        for (int i = 1; i < n; i++) {
+            node.next = new ListNode(i);
+            node = node.next;
+        }
+
+        return head;
+    }
 }
