@@ -1,5 +1,7 @@
 package jiaojiang.leetcode.onlinejudge;
 
+import utils.Utils;
+
 /**
  * @author zhang
  * @since: Sep 24, 2013 2:18:09 PM
@@ -34,7 +36,30 @@ public class PalindromePartitionII {
     }
 
     public static int minCutDP(String s) {
-        return 0;
+        int[] minCut = new int[s.length() + 1];
+        //isPalindrome array is used to check whether the substring from char i to the current char is a palindrome,
+        //which could be done by DP. Please note, in each iteration, all the value could be different. At iteration j,
+        //only first j elements are useful
+        boolean[] isPalindrome = new boolean[s.length()];
+
+        minCut[0] = -1;
+        isPalindrome[0] = true;
+
+        for (int i = 1; i < minCut.length; i++) {
+            int min = minCut[i - 1] + 1;
+            isPalindrome[i - 1] = true;
+            for (int j = 0; j < i - 1; j++) {
+                if (isPalindrome[j + 1] && s.charAt(j) == s.charAt(i - 1)) {
+                    isPalindrome[j] = true;
+                    min = Math.min(min, minCut[j] + 1);
+                } else {
+                    isPalindrome[j] = false;
+                }
+            }
+            minCut[i] = min;
+        }
+
+        return minCut[minCut.length - 1];
     }
 
     private static boolean isPalindrome(String s, int start, int end) {
@@ -43,11 +68,17 @@ public class PalindromePartitionII {
     }
 
     public static void test() {
-        System.out.println("get: " +  minCut("aab") + ", expected: " + "1"); // 1
-        System.out.println("get: " +  minCut("ababababababababababababcbabababababababababababa") + ", expected: " + "0"); // 0
+        Utils.printTestln(minCut("aab"), 1);
+        Utils.printTestln(minCut("ab"), 1);
+        Utils.printTestln(minCut("cabababcbc"), 3);
+//        Utils.printTestln(minCut("ababababababababababababcbabababababababababababa"), 0);
+        
+        Utils.printTestln(minCutDP("aab"), 1);
+        Utils.printTestln(minCutDP("ab"), 1);
+        Utils.printTestln(minCutDP("cabababcbc"), 3);
+        Utils.printTestln(minCutDP("ababababababababababababcbabababababababababababa"), 0);
 
-        System.out.println("get: " +  minCutDP("aab") + ", expected: " + "1"); // 1
-        System.out.println("get: " +  minCutDP("ababababababababababababcbabababababababababababa") + ", expected: " + "0"); // 0
+
     }
 
     public static void main(String[] args) {
