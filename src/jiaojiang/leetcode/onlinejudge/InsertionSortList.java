@@ -9,12 +9,10 @@ public class InsertionSortList {
     Sort a linked list using insertion sort.
      */
     public static ListNode insertionSortList(ListNode head) {
-        ListNode dummyHead = new ListNode(0), node = head, nextNode;
+        ListNode dummyHead = new ListNode(0), node, nextNode, insertPos;
 
-        for (int i = 0; node != null; i++, node = nextNode) {
-            ListNode insertPos = dummyHead;
-            for (int j = 0; j < i && node.val > insertPos.next.val; j++, insertPos = insertPos.next);
-
+        for (node = head; node != null; node = nextNode) {
+            for (insertPos = dummyHead; insertPos.next != null && node.val > insertPos.next.val; insertPos = insertPos.next);
             nextNode = node.next;
             node.next = insertPos.next;
             insertPos.next = node;
