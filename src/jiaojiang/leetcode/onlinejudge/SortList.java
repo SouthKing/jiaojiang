@@ -13,8 +13,8 @@ public class SortList {
             return head;
         }
 
-        ListNode node = head, nodeNext = head;
-
+        ListNode node = head, nodeNext = head.next; // if nodeNext = head, then we cannot split 1->2->null and it goes to
+                                                    //infinite loop
         while (nodeNext != null && nodeNext.next != null) {
             node = node.next;
             nodeNext = nodeNext.next.next;
@@ -26,7 +26,6 @@ public class SortList {
 
         ListNode dummyHead = new ListNode(0);
         node = dummyHead;
-
         while (head1 != null && head2 != null) {
             if (head1.val > head2.val) {
                 node.next = head2;
@@ -36,19 +35,19 @@ public class SortList {
                 head1 = head1.next;
             }
             node = node.next;
-            node.next = null;
         }
 
-        while (head1 != null) {
+        if (head1 != null) {
             node.next = head1;
-            head1 = head1.next;
+        } else {
+            node.next = head2;
         }
 
         return dummyHead.next;
     }
 
     private static void test() {
-        ListNode head = ListNode.constructRandomList(10);
+        ListNode head = ListNode.constructRandomList(5);
         head.print();
         sortList(head).print();
     }
