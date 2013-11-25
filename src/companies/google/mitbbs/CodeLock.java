@@ -15,53 +15,53 @@ public class CodeLock {
      It is also called De Bruijn sequence.
      */
     public static String getSequence() {
-        return getHamlitonianCycle();
-    }
-
-    public static String getHamlitonianCycle() {
         StringBuffer s = new StringBuffer();
-        if (getHamiltonianCycleHelp(0, s, new boolean[100], 0)) {
+        if (getHamiltonianCycle(0, s, new boolean[12], 0) == 0) {
             return s.toString();
         }
 
         return "";
     }
 
-    public static boolean getHamiltonianCycleHelp(int i, StringBuffer s, boolean[] visited, int count) {
-        if (count == 99) {
-            if (!visited[Integer.parseInt(s.substring(99) + s.charAt(0))]) {
-//            if (!visited[Integer.parseInt(s.substring(97) + s.charAt(0))]
-//                    && !visited[Integer.parseInt(s.substring(98) + s.substring(0, 2))]
-//                    && !visited[Integer.parseInt(s.substring(99) + s.substring(0, 3))]) {
-                return true;
+    public static int getHamiltonianCycle(int i, StringBuffer s, boolean[] hasVisited, int count) {
+        if (count == 3) {
+            if (!hasVisited[Integer.parseInt(s.substring(3) + s.charAt(0))]) {
+                return 0;
             }
-            return false;
+            return 1;
         }
 
-        if (visited[i]) {
-            return false;
+        if (hasVisited[i]) {
+            return 2;
         }
 
-        visited[i] = true;
-        if (count != 0) {
-            s.append(i % 10);
-        } else {
+        hasVisited[i] = true;
+        if (count == 0) {
             s.append(String.format("%02d", i));
+        } else {
+            s.append(i);
         }
 
         for (int neighbor : getNeighbors(i)) {
-            if (neighbor == i) {
+            if (i == neighbor) {
                 continue;
             }
-            if (getHamiltonianCycleHelp(neighbor, s, visited, count + 1)) {
-                return true;
+            int retCode = getHamiltonianCycle(neighbor, s, hasVisited, count + 1);
+            if (retCode == 0) {
+                return 0;
             }
-//            s.setLength(s.length() - 1);
-            visited[neighbor] = false;
-        }
-        s.setLength(s.length() - 1);
+            if (retCode == 3) {
 
-        return false;
+            }
+
+            if (retCode == 1) {
+
+            }
+        }
+
+
+
+        return 3;
     }
 
     // assume i and j are in the range of [0, 10000]
@@ -70,9 +70,9 @@ public class CodeLock {
     }
 
     private static int[] getNeighbors(int i) {
-        int[] ret = new int[10];
+        int[] ret = new int[2];
         for (int ii = 0; ii < ret.length; ii++) {
-            ret[ii] = (i % 10) * 10 + i;
+            ret[ii] = (i % 10) * 10 + ii;
         }
 
         return ret;
