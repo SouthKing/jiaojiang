@@ -23,7 +23,7 @@ public class CodeLock {
     }
 
     // assume i and j are in the range of [0, 10000]
-    private static boolean isPath(int i, int j) {
+    private static boolean isNeighbor(int i, int j) {
         return i % 1000 == j / 10;
     }
 
