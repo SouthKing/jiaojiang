@@ -15,22 +15,64 @@ public class CodeLock {
      It is also called De Bruijn sequence.
      */
     public static String getSequence() {
-        return null;
+        return getHamlitonianCycle();
     }
 
-    public static void getHamiltonianCycle() {
-        
+    public static String getHamlitonianCycle() {
+        StringBuffer s = new StringBuffer();
+        if (getHamiltonianCycleHelp(0, s, new boolean[100], 0)) {
+            return s.toString();
+        }
+
+        return "";
+    }
+
+    public static boolean getHamiltonianCycleHelp(int i, StringBuffer s, boolean[] visited, int count) {
+        if (count == 99) {
+            if (!visited[Integer.parseInt(s.substring(99) + s.charAt(0))]) {
+//            if (!visited[Integer.parseInt(s.substring(97) + s.charAt(0))]
+//                    && !visited[Integer.parseInt(s.substring(98) + s.substring(0, 2))]
+//                    && !visited[Integer.parseInt(s.substring(99) + s.substring(0, 3))]) {
+                return true;
+            }
+            return false;
+        }
+
+        if (visited[i]) {
+            return false;
+        }
+
+        visited[i] = true;
+        if (count != 0) {
+            s.append(i % 10);
+        } else {
+            s.append(String.format("%02d", i));
+        }
+
+        for (int neighbor : getNeighbors(i)) {
+            if (neighbor == i) {
+                continue;
+            }
+            if (getHamiltonianCycleHelp(neighbor, s, visited, count + 1)) {
+                return true;
+            }
+//            s.setLength(s.length() - 1);
+            visited[neighbor] = false;
+        }
+        s.setLength(s.length() - 1);
+
+        return false;
     }
 
     // assume i and j are in the range of [0, 10000]
     private static boolean isNeighbor(int i, int j) {
-        return i % 1000 == j / 10;
+        return i % 10 == j / 10;
     }
 
-    private int[] getNeighbors(int i) {
+    private static int[] getNeighbors(int i) {
         int[] ret = new int[10];
         for (int ii = 0; ii < ret.length; ii++) {
-            ret[ii] = (i % 1000) * 10 + i;
+            ret[ii] = (i % 10) * 10 + i;
         }
 
         return ret;
