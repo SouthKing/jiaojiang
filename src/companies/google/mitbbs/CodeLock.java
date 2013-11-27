@@ -1,5 +1,7 @@
 package companies.google.mitbbs;
 
+import java.util.Arrays;
+
 /**
  * @author: mizhang
  * @since: Nov 22, 2013 1:10:02 PM
@@ -19,25 +21,39 @@ public class CodeLock {
      edge between 0000 --> 1111 weight is 4
      */
     public static String getSequence() {
-        StringBuffer s = new StringBuffer();
-        if (getHamiltonianCycle(0, s, new boolean[100], 0)) {
-            return s.toString();
+        StringBuffer s = new StringBuffer("00");
+        boolean[] hasVisited = new boolean[100];
+        hasVisited[0] = true;
+
+        for (int n : getNeighbors(0)) {
+            if (n != 0 && getHamiltonianCycle(n, s, hasVisited, 2)) {
+                return s.toString();
+            }
         }
 
         return "";
-
     }
 
     private static boolean getHamiltonianCycle(int i, StringBuffer s, boolean[] hasVisited, int count) {
+        hasVisited[i] = true;
+        s.append(i % 10);
 
+        if (count == 99) {
+            return !hasVisited[Integer.parseInt(s.substring(99) + s.substring(0, 1))];
+        }
+
+        for (int n : getNeighbors(i)) {
+            if (!hasVisited[n] && n != i) {
+                if (getHamiltonianCycle(n, s, hasVisited, count + 1)) {
+                    return true;
+                }
+                hasVisited[n] = false;
+                s.setLength(s.length() - 1);
+            }
+        }
 
         return false;
     }
-
-
-
-
-
 
 
     public static String getSequence2() {
@@ -73,7 +89,7 @@ public class CodeLock {
             if (i == neighbor) {
                 continue;
             }
-            int retCode = getHamiltonianCycle(neighbor, s, hasVisited, count + 1);
+            int retCode = getHamiltonianCycle2(neighbor, s, hasVisited, count + 1);
             if (retCode == 0) {
                 return 0;
             }
@@ -91,11 +107,6 @@ public class CodeLock {
         return 3;
     }
 
-    // assume i and j are in the range of [0, 10000]
-    private static boolean isNeighbor(int i, int j) {
-        return i % 10 == j / 10;
-    }
-
     private static int[] getNeighbors(int i) {
         int[] ret = new int[10];
         for (int ii = 0; ii < ret.length; ii++) {
@@ -105,7 +116,38 @@ public class CodeLock {
         return ret;
     }
 
+    private static void test() {
+        String sequence = getSequence();
+        System.out.println(sequence);
+        System.out.println(validSequence(sequence, 2));
+
+        sequence = getSequence2();
+        System.out.println(sequence);
+        System.out.println(validSequence(sequence, 2));
+    }
+
+    public static boolean validSequence(String s, int length) {
+        int l = s.length();
+        s += s.substring(0, length);
+
+        int[] integers = new int[l];
+        for(int i = 0; i < l; i++) {
+            integers[i] = Integer.parseInt(s.substring(i, i + length));
+        }
+
+        Arrays.sort(integers);
+
+        for (int i = 0; i < l - 1; i++) {
+            if (integers[i + 1] - integers[i] != 1) {
+                System.out.println(integers[i] + " --> " + integers[i + 1]);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
-        System.out.println(getSequence());
+        test();
     }
 }
