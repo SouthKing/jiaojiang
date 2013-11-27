@@ -13,19 +13,46 @@ public class CodeLock {
      00, 01, 10, 11 and 0011 contains all the combinations (from last to first is 10)
 
      It is also called De Bruijn sequence.
+
+     NOTE: actually, the solutino does exist as De Bruijn sequece. If you do not know De Bruijn sequence solution exist,
+     you should try assign weight to each edge, e.g. 0000 --> 0001, weight is 1 and 0000 --> 0111 weight is 3 and
+     edge between 0000 --> 1111 weight is 4
      */
     public static String getSequence() {
         StringBuffer s = new StringBuffer();
-        if (getHamiltonianCycle(0, s, new boolean[12], 0) == 0) {
+        if (getHamiltonianCycle(0, s, new boolean[100], 0)) {
+            return s.toString();
+        }
+
+        return "";
+
+    }
+
+    private static boolean getHamiltonianCycle(int i, StringBuffer s, boolean[] hasVisited, int count) {
+
+
+        return false;
+    }
+
+
+
+
+
+
+
+    public static String getSequence2() {
+        StringBuffer s = new StringBuffer();
+        if (getHamiltonianCycle2(0, s, new boolean[100], 0) == 0) {
             return s.toString();
         }
 
         return "";
     }
 
-    public static int getHamiltonianCycle(int i, StringBuffer s, boolean[] hasVisited, int count) {
-        if (count == 3) {
-            if (!hasVisited[Integer.parseInt(s.substring(3) + s.charAt(0))]) {
+    // work version but looks ugly
+    public static int getHamiltonianCycle2(int i, StringBuffer s, boolean[] hasVisited, int count) {
+        if (count == 99) {
+            if (!hasVisited[Integer.parseInt(s.substring(99) + s.substring(0, 1))]) {
                 return 0;
             }
             return 1;
@@ -39,7 +66,7 @@ public class CodeLock {
         if (count == 0) {
             s.append(String.format("%02d", i));
         } else {
-            s.append(i);
+            s.append(i%10);
         }
 
         for (int neighbor : getNeighbors(i)) {
@@ -50,16 +77,16 @@ public class CodeLock {
             if (retCode == 0) {
                 return 0;
             }
-            if (retCode == 3) {
-
-            }
 
             if (retCode == 1) {
+                return 3;
+            }
 
+            if (retCode == 3) {
+                s.setLength(s.length() - 1);
+                hasVisited[neighbor] = false;
             }
         }
-
-
 
         return 3;
     }
@@ -70,7 +97,7 @@ public class CodeLock {
     }
 
     private static int[] getNeighbors(int i) {
-        int[] ret = new int[2];
+        int[] ret = new int[10];
         for (int ii = 0; ii < ret.length; ii++) {
             ret[ii] = (i % 10) * 10 + ii;
         }
