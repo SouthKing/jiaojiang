@@ -3,6 +3,8 @@ package companies.facebook.mitbbs;
 import utils.NTreeNode;
 import jiaojiang.leetcode.onlinejudge.TreeNode;
 
+import java.util.Stack;
+
 /**
  * @author: mizhang
  * @since: Nov 27, 2013 1:50:49 PM
@@ -24,15 +26,51 @@ public class TreePreorderTraversal {
         }
     }
 
+    public static void preorderIter(NTreeNode root) {
+        Stack<NTreeNode> stack = new Stack<NTreeNode>();
+        NTreeNode node = root;
+
+        while (!stack.isEmpty() || node != null) {
+            if (node == null) {
+                node = stack.pop();
+            }
+            System.out.print(node.value + "\t");
+            if (node.children != null) {
+                for (int i = node.children.size() - 1; i > 0; i--) {
+                    stack.push(node.children.get(i));
+                }
+                node = node.children.get(0);
+            } else {
+                node = null;
+            }
+        }
+    }
+
     public static void test() {
         NTreeNode root = NTreeNode.constructSampleTree();
         preorder(root);
 
+        System.out.println();
+        preorderIter(root);
+
+        System.out.println();
         preorderBinaryTree(TreeNode.construct());
     }
 
     public static void preorderBinaryTree(TreeNode root) {
-        
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode node = root;
+
+        while (!stack.isEmpty() || node != null) {
+            if (node == null) {
+                node = stack.pop();
+            }
+            System.out.print(node.val + "\t");
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            node = node.left;
+        }
     }
 
     public static void main(String[] args) {
