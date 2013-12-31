@@ -66,7 +66,7 @@ public class Utils {
     public static void printTestIntListln(List<Integer> get, List<Integer> expected) {
         int getSize = get.size(), expectedSize = expected.size(), size;
         if (getSize != expectedSize) {
-            System.out.println("[ERROR] Integer List Sizes do not match: " + getSize + " vs " + expected);
+            System.out.println("[ERROR] Integer List Sizes do not match: " + getSize + " vs " + expected.size());
         }
         size = Math.min(getSize, expectedSize);
         for (int i = 0; i < size; i++) {
