@@ -91,22 +91,113 @@ public class SurroundedRegion {
         }
     }
 
-    private static void test() {
-        char[][] board = new char[][]{
+    public static void solve2(char[][] board) {
+        if (board.length == 0) {
+            return;
+        }
+
+        int m = board.length, n = board[0].length;
+        Queue<Integer> queue = new LinkedList<Integer>();
+        
+        for (int i = 0; i < n; i++) {
+            if (board[0][i] == 'O') {
+                board[0][i] = 'V';
+                queue.add(0);
+                queue.add(i);
+            }
+
+            if (board[m - 1][i] == 'O') {
+                board[m - 1][i] = 'V';
+                queue.add(m - 1);
+                queue.add(i);
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            if (board[i][0] == 'O') {
+                board[i][0] = 'V';
+                queue.add(i);
+                queue.add(0);
+            }
+
+            if (board[i][n - 1] == 'O') {
+                board[i][n - 1] = 'V';
+                queue.add(i);
+                queue.add(n - 1);
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            int i = queue.remove(), j = queue.remove();
+            if (i > 0 && board[i - 1][j] == 'O') {
+                queue.add(i - 1);
+                queue.add(j);
+                board[i - 1][j] = 'V';
+            }
+
+            if (i < m - 1 && board[i + 1][j] == 'O') {
+                queue.add(i + 1);
+                queue.add(j);
+                board[i + 1][j] = 'V';
+            }
+
+            if (j > 0 && board[i][j - 1] == 'O') {
+                queue.add(i);
+                queue.add(j - 1);
+                board[i][j - 1] = 'V';
+            }if (j < n - 1 && board[i][j + 1] == 'O') {
+                queue.add(i);
+                queue.add(j + 1);
+                board[i][j + 1] = 'V';
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'V') {
+                    board[i][j] = 'O';
+                } else if (board[i][j] == 'O') {
+                    board[i][j] = 'X';
+                }
+            }
+        }
+    }
+
+    private static char[][] getSampleBoard() {
+        return new char[][]{
             "XXXX".toCharArray(),
             "XOOX".toCharArray(),
             "XXOX".toCharArray(),
             "XOXX".toCharArray()
         };
+    }
 
-        solve(board);
+    private static char[][] getSampleBoard2() {
+        return new char[][]{
+                "XOXOXO".toCharArray(),
+                "OXOXOX".toCharArray(),
+                "XOXOXO".toCharArray(),
+                "OXOXOX".toCharArray()
+        };
+    }
 
+    private static void printBoard(char[][] board) {
         for (char[] line : board) {
             for (char c : line) {
                 System.out.print(c);
             }
             System.out.println();
         }
+    }
+
+    private static void test() {
+//        char[][] board = getSampleBoard();
+        char[][] board2 = getSampleBoard2();
+//        solve(board);
+        solve2(board2);
+
+//        printBoard(board);
+        printBoard(board2);
     }
 
     public static void main(String[] args) {
