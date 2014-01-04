@@ -21,6 +21,9 @@ public class LongestValidParentheses {
     private static void test() {
         Utils.printTestln(longestValidParentheses(")()())"), 4);
         Utils.printTestln(longestValidParentheses("(()"), 2);
+        Utils.printTestln(longestValidParentheses(")()())"), 4);
+        Utils.printTestln(longestValidParentheses(")(((((()())()()))()(()))("), 22);
+        Utils.printTestln(longestValidParentheses("()(()"), 2);
     }
 
     public static void main(String[] args) {
