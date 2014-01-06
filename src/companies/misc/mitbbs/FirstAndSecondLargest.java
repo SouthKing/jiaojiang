@@ -22,7 +22,7 @@ public class FirstAndSecondLargest {
     }
 
     private static void test() {
-        Utils.printTestIntArrayln(find1st2ndLargest(new int[]{10,9,5,4,11,100,120,110}), new int[]{120, 110});
+        Utils.printTestArrayln(find1st2ndLargest(new int[]{10,9,5,4,11,100,120,110}), new int[]{120, 110});
     }
 
     public static void main(String[] args) {

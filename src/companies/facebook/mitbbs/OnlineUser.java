@@ -154,8 +154,8 @@ public class OnlineUser {
     }
 
     private static void test() {
-        Utils.printList(onlineUser(Arrays.asList(new Log(0, 1), new Log(0, 2), new Log(1, 3))));
-        Utils.printList(onlineUser2(Arrays.asList(new Log(0, 1), new Log(0, 2), new Log(1, 3))));
+        Utils.printListln(onlineUser(Arrays.asList(new Log(0, 1), new Log(0, 2), new Log(1, 3))));
+        Utils.printListln(onlineUser2(Arrays.asList(new Log(0, 1), new Log(0, 2), new Log(1, 3))));
     }
 
     public static void main(String[] args) {

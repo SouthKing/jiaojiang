@@ -1,11 +1,8 @@
 package jiaojiang.huayuan;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
+import utils.Utils;
 
 public class Combination {
-
     public static void printCombination(String input) {
         printCombination(new char[input.length()], 0, input.toCharArray(), 0);
     }
@@ -16,7 +13,7 @@ public class Combination {
 
     public static void printCombination(char[] prefix, int write, char[] input, int read) {
         if (read == input.length) {
-            Utils.println(prefix, 0, write);
+            Utils.printArrayRangeln(prefix, write);
             return;
         }
 
@@ -39,7 +36,7 @@ public class Combination {
 
         if (read == input.length) {
             if (write == length) {
-                Utils.println(prefix, 0, write);
+                Utils.printArrayRangeln(prefix, write);
             }
             return;
         }

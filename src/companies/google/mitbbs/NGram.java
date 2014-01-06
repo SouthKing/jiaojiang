@@ -18,7 +18,7 @@ public class NGram {
     }
 
     private static void test() {
-        Utils.printList(getNGram("hello world all", 2));
+        Utils.printListln(getNGram("hello world all", 2));
     }
 
     public static void main(String[] args) {

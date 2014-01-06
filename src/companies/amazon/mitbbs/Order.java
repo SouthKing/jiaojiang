@@ -1,6 +1,6 @@
 package companies.amazon.mitbbs;
 
-import jiaojiang.huayuan.Utils;
+import utils.Utils;
 
 /**
  * @author: zhang

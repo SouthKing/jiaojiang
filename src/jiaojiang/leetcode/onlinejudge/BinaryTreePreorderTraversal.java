@@ -48,7 +48,7 @@ public class BinaryTreePreorderTraversal {
     }
 
     public static void test() {
-        Utils.printList(preorderTraversal(TreeNode.construct()));
+        Utils.printListln(preorderTraversal(TreeNode.construct()));
     }
 
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package jiaojiang.huayuan;
 
+import utils.Utils;
+
 
 public class Permutation {
     public static void printPermutation(String input) {
@@ -13,7 +15,7 @@ public class Permutation {
         }
 
         if (input.length - level == 1) {
-            Utils.println(input);
+            Utils.printArrayln(input);
             return;
         }
 

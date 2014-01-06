@@ -56,7 +56,7 @@ public class BinaryTreePostorderTraversal {
     }
 
     public static void test() {
-        Utils.printList(postorderTraversal(TreeNode.construct()));        
+        Utils.printListln(postorderTraversal(TreeNode.construct()));
     }
 
     public static void main(String[] args) {

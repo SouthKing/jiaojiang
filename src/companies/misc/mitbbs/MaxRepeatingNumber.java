@@ -42,7 +42,7 @@ public class MaxRepeatingNumber {
     }
 
     public static int maxRepeatingNumberR(int[] data) {
-        Utils.printIntArray(data);
+        Utils.printArrayln(data);
 
         int maxIdx = 0, max = 0, n = data.length;
 
@@ -65,7 +65,7 @@ public class MaxRepeatingNumber {
             data[i] = data[i] % n;
         }
 
-        Utils.printIntArray(data);
+        Utils.printArrayln(data);
 
         return maxIdx;
     }

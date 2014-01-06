@@ -35,7 +35,7 @@ public class twosum {
     }
 
     private static void test() {
-        Utils.printTestIntArrayln(twoSum(new int[]{2, 7, 11, 15}, 9), new int[]{1, 2});
+        Utils.printTestArrayln(twoSum(new int[]{2, 7, 11, 15}, 9), new int[]{1, 2});
     }
 
     public static void main(String[] args) {

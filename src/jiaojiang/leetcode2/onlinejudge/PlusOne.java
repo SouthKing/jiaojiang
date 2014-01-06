@@ -27,8 +27,8 @@ public class PlusOne {
     }
 
     private static void test() {
-        Utils.printIntArray(plusOne(new int[]{1, 2, 8}));
-        Utils.printIntArray(plusOne(new int[]{9, 9}));
+        Utils.printArrayln(plusOne(new int[]{1, 2, 8}));
+        Utils.printArrayln(plusOne(new int[]{9, 9}));
     }
 
     public static void main(String[] args) {

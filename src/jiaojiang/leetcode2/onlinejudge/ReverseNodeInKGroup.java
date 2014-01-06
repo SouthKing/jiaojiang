@@ -22,17 +22,37 @@ public class ReverseNodeInKGroup {
     For k = 3, you should return: 3->2->1->4->5
      */
     public static ListNode reverseKGroup(ListNode head, int k) {
+        if (k < 2 || head == null || head.next == null) {
+            return head;
+        }
 
-        return null;
+        ListNode newHead = head;
+        for (int i = 1; i < k; i++, newHead = newHead.next){
+            if (newHead.next == null) {
+                return head;
+            }
+        }
+
+        ListNode node = head;
+        for (int i = 1; i < k; i++) {
+            ListNode next = node.next;
+            node.next = newHead.next;
+            newHead.next = node;
+            node = next;
+        }
+
+        head.next = reverseKGroup(head.next, k);
+
+        return newHead;
     }
 
     private static void test() {
-
+        ListNode.print(reverseKGroup(ListNode.getSampleList(5), 2));
+        ListNode.print(reverseKGroup(ListNode.getSampleList(5), 3));
+        ListNode.print(reverseKGroup(null, 1));
     }
 
     public static void main(String[] args){
         test();
     }
-
-
 }

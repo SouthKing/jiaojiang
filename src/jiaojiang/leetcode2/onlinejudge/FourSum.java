@@ -110,25 +110,25 @@ public class FourSum {
 
     private static void test() {
         for (List<Integer> ilist : fourSum(new int[]{-5, 5, 4, -3, 0 , 0, 4, -2}, 4)) {
-            Utils.printIntList(ilist);
+            Utils.printIntListln(ilist);
         }
 
         for (List<Integer> ilist : fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0)) {
-            Utils.printIntList(ilist);
+            Utils.printIntListln(ilist);
         }
 
         for (List<Integer> ilist : fourSum(new int[]{0, 0, 0, 0}, 1)) {
-            Utils.printIntList(ilist);
+            Utils.printIntListln(ilist);
         }
 
         for (List<Integer> ilist : fourSum(new int[]{0, 0, 0}, 0)) {
-            Utils.printIntList(ilist);
+            Utils.printIntListln(ilist);
         }
 
         for (List<Integer> ilist : fourSum(new int[]{-493,-470,-464,-453,-451,-446,-445,-407,-406,-393,-328,-312,-307,
                 -303,-259,-253,-252,-243,-221,-193,-126,-126,-122,-117,-106,-105,-101,-71,-20,-12,3,4,20,20,54,84,98,
                 111,148,149,152,171,175,176,211,218,227,331,352,389,410,420,448,485}, 1057)) {
-            Utils.printIntList(ilist);
+            Utils.printIntListln(ilist);
         }
     }
 

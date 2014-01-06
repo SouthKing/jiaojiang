@@ -60,7 +60,7 @@ public class HitCounter {
             hc.hit();
             count++;
             System.out.println("Hits: " + count);
-            Utils.printIntArray(hc.circularBuffer);
+            Utils.printArrayln(hc.circularBuffer);
             System.out.println();
         }
 

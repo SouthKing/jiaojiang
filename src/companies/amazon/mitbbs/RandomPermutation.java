@@ -1,6 +1,6 @@
 package companies.amazon.mitbbs;
 
-import jiaojiang.huayuan.Utils;
+import utils.Utils;
 
 import java.util.Random;
 import java.util.HashMap;

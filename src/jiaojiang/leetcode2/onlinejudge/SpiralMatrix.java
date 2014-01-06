@@ -60,23 +60,23 @@ public class SpiralMatrix {
     }
 
     private static void test() {
-        Utils.printTestIntListln(spiralOrder(new int[][]{}), new ArrayList<Integer>());
+        Utils.printTestListln(spiralOrder(new int[][]{}), new ArrayList<Integer>());
 
-        Utils.printTestIntListln(spiralOrder(new int[][]{
+        Utils.printTestListln(spiralOrder(new int[][]{
             {1}
         }), Arrays.asList(1));
 
-        Utils.printTestIntListln(spiralOrder(new int[][]{
+        Utils.printTestListln(spiralOrder(new int[][]{
             {1, 2, 3}
         }), Arrays.asList(1, 2, 3));
 
-        Utils.printTestIntListln(spiralOrder(new int[][]{
+        Utils.printTestListln(spiralOrder(new int[][]{
             {1},
             {2},
             {3}
         }), Arrays.asList(1, 2, 3));
 
-        Utils.printTestIntListln(spiralOrder(new int[][]{
+        Utils.printTestListln(spiralOrder(new int[][]{
             {1, 2, 3},
             {4, 5, 6},
             {7, 8, 9},

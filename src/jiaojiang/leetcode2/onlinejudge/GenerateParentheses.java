@@ -38,7 +38,7 @@ public class GenerateParentheses {
     }
 
     private static void test() {
-        Utils.printList(generateParenthesis(3));
+        Utils.printListln(generateParenthesis(3));
     }
 
     public static void main(String[] args) {

@@ -55,7 +55,7 @@ public class SubstringWithConcatecationOfAllWords {
     }
 
     public static void test() {
-        Utils.printTestIntListln(findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}), Arrays.asList(0, 9));
+        Utils.printTestListln(findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}), Arrays.asList(0, 9));
     }
 
     public static void main(String[] args) {

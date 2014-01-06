@@ -56,10 +56,10 @@ public class ZeroSubarray {
     }
 
     public static void test() {
-        Utils.printTestIntArrayln(findSumToZero(new int[]{1, 2, 3, 4, 5, 6, 7, 8}), new int[]{-1, -1});
-        Utils.printTestIntArrayln(findSumToZero(new int[]{1, 2, 3, 4, 5, -7, -8, 6}), new int[]{0, 7});
-        Utils.printTestIntArrayln(findSumToZero(new int[]{-1, 6, -3, 4, -5, 2, -1, 6}), new int[]{3, 7});
-        Utils.printTestIntArrayln(findSumToZero(new int[]{-1, 6, -3, 0, -5, 2, -1, 6}), new int[]{1, 6});      // or (3, 4)
+        Utils.printTestArrayln(findSumToZero(new int[]{1, 2, 3, 4, 5, 6, 7, 8}), new int[]{-1, -1});
+        Utils.printTestArrayln(findSumToZero(new int[]{1, 2, 3, 4, 5, -7, -8, 6}), new int[]{0, 7});
+        Utils.printTestArrayln(findSumToZero(new int[]{-1, 6, -3, 4, -5, 2, -1, 6}), new int[]{3, 7});
+        Utils.printTestArrayln(findSumToZero(new int[]{-1, 6, -3, 0, -5, 2, -1, 6}), new int[]{1, 6});      // or (3, 4)
     }
 
     public static void main(String[] args) {
