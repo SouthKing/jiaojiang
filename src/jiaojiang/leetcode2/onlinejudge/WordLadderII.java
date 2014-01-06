@@ -34,8 +34,8 @@ public class WordLadderII {
         Map<String, List<String>> parentMap = new HashMap<String, List<String>>();
         Queue<String> queue = new LinkedList<String>();
 
-        queue.add(start);
-        parentMap.put(start, null);
+        queue.add(end);
+        parentMap.put(end, null);
         queue.add(null);
 
         String word;
@@ -44,16 +44,17 @@ public class WordLadderII {
         while (!queue.isEmpty() && !found) {
             //one word could have muplile pares in one single level, but if the word has been visited in the earlier level,
             // then it should not be added to the queue
-            Set<String> visited = parentMap.keySet();
+            Set<String> visited = new HashSet<String>(parentMap.keySet());
             while ((word = queue.remove()) != null) {
-                for (String aw : getAdjacentWords(word, dict)) {
-                    if (end.equals(aw)) {
+                for (String aw : getAdjacentWords(word, dict, start)) {
+                    if (start.equals(aw)) {
                         found = true;
                     }
+
                     if (!visited.contains(aw)) {
-                        queue.add(aw);
                         if (!parentMap.containsKey(aw)) {
-                             parentMap.put(aw, new ArrayList<String>());
+                            queue.add(aw);
+                            parentMap.put(aw, new ArrayList<String>());
                         }
                         parentMap.get(aw).add(word);
                     }
@@ -67,7 +68,7 @@ public class WordLadderII {
 
         if (found) {
             ArrayList<String> dest = new ArrayList<String>();
-            dest.add(end);
+            dest.add(start);
             ret.add(dest);
 
             for (int i = 1; i < level; i++) {
@@ -89,7 +90,7 @@ public class WordLadderII {
 
     }
 
-    private static List<String> getAdjacentWords(String s, Set<String> dict) {
+    private static List<String> getAdjacentWords(String s, Set<String> dict, String target) {
         char[] chars = s.toCharArray();
         List<String> aWords = new ArrayList<String>();
 
@@ -99,7 +100,7 @@ public class WordLadderII {
             for (char c = 'a'; c <= 'z'; c++) {
                 if (c != currentChar) {
                     chars[i] = c;
-                    if (dict.contains(word = new String(chars))) {
+                    if (dict.contains(word = new String(chars)) || word.equals(target)) {
                         aWords.add(word);
                     }
                 }

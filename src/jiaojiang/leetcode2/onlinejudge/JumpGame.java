@@ -74,7 +74,7 @@ public class JumpGame {
     }
 
 
-    private static int[] getLargeSampleIntArray(){
+    protected static int[] getLargeSampleIntArray(){
         
         InputStream is  = JumpGame.class.getResourceAsStream("/JumpGame.data");
 
