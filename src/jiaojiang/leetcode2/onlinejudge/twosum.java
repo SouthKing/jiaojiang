@@ -9,7 +9,7 @@ import java.util.Map;
  * @author: zhang
  * @since: Dec 12, 2013 11:15:59 PM
  */
-public class twosum {
+public class TwoSum {
     /*
     Given an array of integers, find two numbers such that they add up to a specific target number.
 
