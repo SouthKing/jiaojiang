@@ -63,6 +63,12 @@ public class Utils {
         System.out.println();
     }
 
+    public static void printListListln(List<? extends List> data) {
+        for (List l : data) {
+            printListln(l);
+        }
+    }
+
     public static void printIntListln(List<Integer> data) {
         for (int i : data) {
             System.out.print(i + "\t");
