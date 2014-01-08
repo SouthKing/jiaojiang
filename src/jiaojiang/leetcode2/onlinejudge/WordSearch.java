@@ -30,7 +30,6 @@ public class WordSearch {
     */
     public static boolean exist(char[][] board, String word) {
         int m = board.length, n = board[0].length;
-
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (exist(board, word, new boolean[m][n], i, j, 0)) {
@@ -38,30 +37,24 @@ public class WordSearch {
                 }
             }
         }
-
         return false;
-
     }
 
     private static boolean exist(char[][] board, String word, boolean[][] hasVisited, int i, int j, int wStart) {
         if (wStart == word.length()) {
             return true;
         }
-
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(wStart) || hasVisited[i][j]) {
             return false;
         }
         hasVisited[i][j] = true;
-
         if (exist(board, word, hasVisited, i - 1, j, wStart + 1)
                 || exist(board, word, hasVisited, i, j + 1, wStart + 1)
                 || exist(board, word, hasVisited, i + 1, j, wStart + 1)
                 || exist(board, word, hasVisited, i, j - 1, wStart + 1)) {
             return true;
         }
-
         hasVisited[i][j] = false;
-
         return false;
     }
 
