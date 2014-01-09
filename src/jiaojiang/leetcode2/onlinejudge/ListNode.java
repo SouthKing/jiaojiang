@@ -23,15 +23,19 @@ public class ListNode {
         System.out.println();
     }
 
-    public static ListNode getSampleList(int k) {
-        if (k == 0) {
+    public static ListNode getSampleList(int length) {
+        return getSampleList(0, length);
+    }
+
+    public static ListNode getSampleList(int start, int length) {
+        if (length == 0) {
             return null;
         }
 
-        ListNode root = new ListNode(1);
+        ListNode root = new ListNode(start);
         ListNode pre = root;
-        for (int i = 1; i < k; i++) {
-            pre.next = new ListNode(i + 1);
+        for (int i = 1; i < length; i++) {
+            pre.next = new ListNode(start + i + 1);
             pre = pre.next;
         }
 
