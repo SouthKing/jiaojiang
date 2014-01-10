@@ -26,7 +26,7 @@ public class ListNode {
     }
 
     public static ListNode getSampleList(int length) {
-        return getSampleList(0, length);
+        return getSampleList(1, length);
     }
 
     public static ListNode getSampleList(int start, int length) {
@@ -37,7 +37,7 @@ public class ListNode {
         ListNode root = new ListNode(start);
         ListNode pre = root;
         for (int i = 1; i < length; i++) {
-            pre.next = new ListNode(start + i + 1);
+            pre.next = new ListNode(start + i);
             pre = pre.next;
         }
 
