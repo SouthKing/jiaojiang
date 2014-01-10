@@ -1,5 +1,7 @@
 package jiaojiang.leetcode2.onlinejudge;
 
+import java.util.Random;
+
 /**
  * @author: zhang
  * @since: Jan 5, 2014 1:51:18 AM
@@ -36,6 +38,22 @@ public class ListNode {
         ListNode pre = root;
         for (int i = 1; i < length; i++) {
             pre.next = new ListNode(start + i + 1);
+            pre = pre.next;
+        }
+
+        return root;
+    }
+
+    public static ListNode getSampleRandomList(int length) {
+        if (length == 0) {
+            return null;
+        }
+
+        Random r = new Random();
+        ListNode root = new ListNode(r.nextInt(10 * length));
+        ListNode pre = root;
+        for (int i = 1; i < length; i++) {
+            pre.next = new ListNode(r.nextInt(10 * length));
             pre = pre.next;
         }
 
