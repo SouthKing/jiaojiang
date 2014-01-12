@@ -23,7 +23,19 @@ public class InsertInterval {
     This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
      */
     public static ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
+        int i, l;
+        ArrayList<Interval> ret = new ArrayList<Interval>();
+        for (i = 0, l = intervals.size(); i < l && intervals.get(i).end < newInterval.start; ret.add(intervals.get(i)), i++);
 
+        if (i < l) {
+            newInterval.start = Math.min(intervals.get(i).start, newInterval.start);
+        }
+        
+        for (; i < l && newInterval.end >= intervals.get(i).start; newInterval.end = Math.max(newInterval.end, intervals.get(i).end), i++);
+        ret.add(newInterval);
+        for (; i < l; ret.add(intervals.get(i++)));
+
+        return ret;
     }
 
     private static void test() {
@@ -35,6 +47,10 @@ public class InsertInterval {
         intervals.add(new Interval(12, 16));
 
         Utils.printListln(insert(intervals, new Interval(4, 9)));
+
+        intervals.clear();
+        intervals.add(new Interval(1, 5));
+        Utils.printListln(insert(intervals, new Interval(2, 3)));
     }
 
     public static void main(String[] args) {
