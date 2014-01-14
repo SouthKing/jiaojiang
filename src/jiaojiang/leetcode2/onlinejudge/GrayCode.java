@@ -35,8 +35,7 @@ public class GrayCode {
             return ret;
         }
         ret = grayCode(n - 1);
-        int leftOne = (int)Math.pow(2, n - 1);
-        for (int i = ret.size() - 1; i >= 0; i--) {
+        for (int i = ret.size() - 1, leftOne = (int)Math.pow(2, n - 1); i >= 0; i--) {
             ret.add(ret.get(i) + leftOne);
         }
         return ret;
@@ -45,9 +44,9 @@ public class GrayCode {
     public static ArrayList<Integer> grayCode2(int n) {
         ArrayList<Integer> ret = new ArrayList<Integer>();
         ret.add(0);
+        
         for (int i = 0; i < n; i++) {
-            int leftOne = (int)Math.pow(2, i);
-            for (int j = ret.size() - 1; j >= 0; j--) {
+            for (int j = ret.size() - 1, leftOne = (int)Math.pow(2, i); j >= 0; j--) {
                 ret.add(leftOne + ret.get(j));
             }
         }
