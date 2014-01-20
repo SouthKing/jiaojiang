@@ -8,7 +8,13 @@ import java.util.List;
  */
 public class Utils {
     public static void printTestln(Object get, Object expected) {
-        if (get.equals(expected)) {
+        if (get == null && expected == null) {
+            System.out.println("get: null, expected: null");
+        } else if (get == null){
+            System.out.println("[ERROR] get: null, expected: " + expected.toString());
+        } else if (expected == null) {
+            System.out.println("[ERROR] get: "+ get.toString() + ", expected: null");
+        } else if (get.equals(expected)) {
             System.out.println("get: " + get.toString() + ", expected: " + expected.toString());
         } else {
             System.out.println("[ERROR] get: " + get.toString() + ", expected: " + expected.toString());
