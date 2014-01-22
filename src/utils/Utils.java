@@ -32,6 +32,17 @@ public class Utils {
         System.out.println();
     }
 
+    public static void printArrayln(String[] data, String dilimit) {
+        for (String s : data) {
+            System.out.print(s + dilimit);
+        }
+        System.out.println();
+    }
+
+    public static void printArrayln(String[] data) {
+        printArrayln(data, "\t");
+    }
+
     public static void printArrayln(char[] data) {
         for (char c : data) {
             System.out.print(c + "\t");
@@ -85,6 +96,18 @@ public class Utils {
         for (List l : data) {
             printListln(l);
         }
+        System.out.println();
+    }
+
+    public static void printListArrayln(List<String[]> data, String dilimit) {
+        for (String[] l : data) {
+            printArrayln(l, dilimit);
+        }
+        System.out.println();
+    }
+
+    public static void printListArrayln(List<String[]> data) {
+        printListArrayln(data, "\t");
     }
 
     public static void printIntListln(List<Integer> data) {
