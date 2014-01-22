@@ -11,7 +11,7 @@ import java.util.List;
  * @author: zhang
  * @since: Jan 20, 2014 11:30:41 AM
  */
-public class PermutationII {
+public class PermutationsII {
     /*
     Given a collection of numbers that might contain duplicates, return all possible unique permutations.
 

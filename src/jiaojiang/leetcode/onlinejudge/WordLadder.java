@@ -148,7 +148,7 @@ public class WordLadder {
         dict.clear();
         dict.add("hit");
         dict.add("cog");
-        System.out.println(ladderLength("hit", "cog", dict)); //2
+        System.out.println(ladderLength("hit", "cog", dict)); //0
 
         System.out.println(ladderLength2("cet", "ism", getDict()));
     }

@@ -52,7 +52,13 @@ public class Utils {
         }
     }
 
-     public static void printArrayRangeln(char[] charSeq, int start, int end) {
+    public static void print2DArrayln(char[][] data) {
+        for (char[] i : data) {
+            printArrayln(i);
+        }
+    }
+
+    public static void printArrayRangeln(char[] charSeq, int start, int end) {
         if (end > charSeq.length) {
             end = charSeq.length;
         } else if (end < 0) {

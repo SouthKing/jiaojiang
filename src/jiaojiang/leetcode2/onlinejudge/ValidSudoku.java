@@ -15,6 +15,8 @@ public class ValidSudoku {
 
     The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
 
+    // see 250px-Sudoku-by-L2G-20050714.svg.png
+
 
     A partially filled sudoku which is valid.
     */
