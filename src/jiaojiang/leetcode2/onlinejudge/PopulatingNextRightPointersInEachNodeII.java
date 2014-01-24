@@ -1,0 +1,92 @@
+package jiaojiang.leetcode2.onlinejudge;
+
+import java.util.Queue;
+import java.util.LinkedList;
+
+/**
+ * @author: mizhang
+ * @since: Jan 23, 2014 1:11:31 PM
+ */
+public class PopulatingNextRightPointersInEachNodeII {
+    /*
+    Follow up for problem "Populating Next Right Pointers in Each Node".
+
+    What if the given tree could be any binary tree? Would your previous solution still work?
+
+    Note:
+
+    You may only use constant extra space.
+    For example,
+    Given the following binary tree,
+             1
+           /  \
+          2    3
+         / \    \
+        4   5    7
+    After calling your function, the tree should look like:
+             1 -> NULL
+           /  \
+          2 -> 3 -> NULL
+         / \    \
+        4-> 5 -> 7 -> NULL
+     */
+    public static void connect(TreeLinkNode root) {
+        if (root == null) {
+            return;
+        }
+
+        TreeLinkNode leftMostNode = root;
+        Queue<TreeLinkNode> child = new LinkedList<TreeLinkNode>();
+
+        while (leftMostNode != null) {
+            TreeLinkNode preNode, nextNode, node = leftMostNode;
+            while (node != null && child.isEmpty()) {
+                if (node.left != null) {
+                    child.add(node.left);
+                }
+                if (node.right != null) {
+                    child.add(node.right);
+                }
+                node = node.next;
+            }
+
+            if (child.isEmpty()) {
+                return;
+            }
+
+            preNode = leftMostNode = child.remove();
+            if (!child.isEmpty()) {
+                nextNode = child.remove();
+                preNode.next = nextNode;
+                preNode = nextNode;
+            }
+
+            while (node != null) {
+                node = node.next;
+                if (node.left != null) {
+                    child.add(node.left);
+                }
+                if (node.right != null) {
+                    child.add(node.right);
+                }
+                while (!child.isEmpty()) {
+                    nextNode = child.remove();
+                    preNode.next = nextNode;
+                    preNode = nextNode;
+                }
+                node = node.next;
+            }
+        }
+    }
+
+    private static void test() {
+        TreeLinkNode root = new TreeLinkNode(1);
+        root.left = new TreeLinkNode(2);
+
+        connect(root);
+    }
+
+    public static void main(String[] args) {
+        test();
+    }
+}
