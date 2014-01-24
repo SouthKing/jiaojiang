@@ -62,7 +62,6 @@ public class PopulatingNextRightPointersInEachNodeII {
             }
 
             while (node != null) {
-                node = node.next;
                 if (node.left != null) {
                     child.add(node.left);
                 }
@@ -79,11 +78,33 @@ public class PopulatingNextRightPointersInEachNodeII {
         }
     }
 
+    public static void connect2(TreeLinkNode root) {
+        TreeLinkNode leftMostNode = root, dummyNode = new TreeLinkNode(0);
+        while (leftMostNode != null) {
+            TreeLinkNode node = leftMostNode, preNode = dummyNode;
+            while (node != null) {
+                if (node.left != null) {
+                    preNode.next = node.left;
+                    preNode = node.left;
+                }
+                if (node.right != null) {
+                    preNode.next = node.right;
+                    preNode = preNode.next;
+                }
+                node = node.next;
+            }
+            leftMostNode = dummyNode.next;
+            dummyNode.next = null;
+        }
+    }
+
     private static void test() {
         TreeLinkNode root = new TreeLinkNode(1);
         root.left = new TreeLinkNode(2);
 
         connect(root);
+
+        connect2(root);
     }
 
     public static void main(String[] args) {
