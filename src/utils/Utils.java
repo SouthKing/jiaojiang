@@ -92,6 +92,13 @@ public class Utils {
         System.out.println();
     }
 
+    public static void printListln(List data, String dilimit) {
+        for (Object o : data) {
+            System.out.print(o.toString() + dilimit);
+        }
+        System.out.println();
+    }
+
     public static void printListListln(List<? extends List> data) {
         for (List l : data) {
             printListln(l);
