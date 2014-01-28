@@ -21,7 +21,7 @@ public class ConvertSortedListToBinarySearchTree {
         ListNode[] nodes = new ListNode[1];
         nodes[0] = head;
         
-        return sortedLlistToBST(nodes, 0, length);
+        return sortedLlistToBST(nodes, 0, length - 1);
     }
 
     public static TreeNode sortedLlistToBST(ListNode[] head, int start, int end) {
@@ -42,6 +42,8 @@ public class ConvertSortedListToBinarySearchTree {
     }
 
     private static void test() {
+        TreeNode.inOrder(sortedListToBST(ListNode.getSampleList(3)));
+        System.out.println("");
         TreeNode.inOrder(sortedListToBST(ListNode.getSampleList(7)));
     }
 
