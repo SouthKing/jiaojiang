@@ -51,60 +51,112 @@ public class WildcardMatching {
             return m == n;
         }
 
-        boolean[][] dp = new boolean[m + 1][n];
+        boolean[][] dp = new boolean[2][m + 1];
 
         if (p.charAt(n - 1) == '*') {
             for (int i = 0; i <= m; i++) {
-                dp[i][n - 1] = true;
+                dp[0][i] = true;
             }
         } else if (m > 0) {
-            dp[m - 1][n - 1] = s.charAt(m - 1) == p.charAt(n - 1) || p.charAt(n - 1) == '.';
+            dp[0][m - 1] = s.charAt(m - 1) == p.charAt(n - 1) || p.charAt(n - 1) == '.';
         }
 
         for (int i = n - 2; i >= 0; i--) {
-            dp[m][i] = dp[m][i + 1] && p.charAt(i) == '*';
+            boolean[] tmp = dp[0];
+            dp[0] = dp[1];
+            dp[1] = tmp;
+            
+            dp[0][m] = dp[1][m] && p.charAt(i) == '*';
             for (int j = m - 1; j >= 0; j--) {
                 if (p.charAt(i) != '*') {
-                    dp[j][i] = dp[j + 1][i + 1] && (s.charAt(j) == p.charAt(i) || p.charAt(i) == '.');
+                    dp[0][j] = dp[1][j + 1] && (s.charAt(j) == p.charAt(i) || p.charAt(i) == '.');
                 } else {
-                    dp[j][i] = dp[j + 1][i] || dp[j][i + 1];
+                    dp[0][j] = dp[0][j + 1] || dp[1][j];
                 }
-                
             }
         }
 
         return dp[0][0];
     }
 
+    public static boolean isMatchGreedy(String s, String p) {
+        int i1 = 0, i2 = 0, lastWildcard = -1;
 
+        while (true) {
+            int start1 = i1, start2 = i2;
+            for (; i2 < p.length() && p.charAt(i2) != '*'; i2++);
+            if (i2 == p.length()) {
+                return isMatchFromEnd(s, p, start2);
+            }
+
+            if ((i1 = isMatchHelp(s, start1, p, start2, i2)) == -1) {
+                return false;
+            }
+        }
+    }
+
+    private static boolean isMatchFromEnd(String s, String p, int start) {
+        int i, j;
+        for (i = s.length() - 1, j = p.length() - 1; i >= 0 && j >= start && (p.charAt(j) == '.' ||s.charAt(i) == p.charAt(j)); i--, j--);
+        return j == start - 1;
+    }
+
+    private static int isMatchHelp(String s, int start, String p, int start2, int end2) {
+        for (int i = 0, j; i < s.length() - start - end2 + start2 + 1; i++) {
+            for (j = 0; j < end2 - start2 && (p.charAt(start2 + j) == '.' || p.charAt(start2 + j) == s.charAt(start + j + i)); j++);
+            if (j == end2 - start2) {
+                return start + j + i;
+            }
+        }
+        return -1;
+    }
 
     private static void test() {
-        Utils.printTestln(isMatch("",""), true);
-        Utils.printTestln(isMatch("","*"), true);
-        Utils.printTestln(isMatch("aa","a"), false);
-        Utils.printTestln(isMatch("aa","aa"), true);
-        Utils.printTestln(isMatch("aaa","aa"), false);
-        Utils.printTestln(isMatch("aa", "a*"), true);
-        Utils.printTestln(isMatch("aab", "a*"), true);
-        Utils.printTestln(isMatch("aa", ".*"), true);
-        Utils.printTestln(isMatch("ab", ".*"), true);
-        Utils.printTestln(isMatch("a", ".*"), true);
-        Utils.printTestln(isMatch("aab", "c*a*b"), false);
+//        Utils.printTestln(isMatch("",""), true);
+//        Utils.printTestln(isMatch("","*"), true);
+//        Utils.printTestln(isMatch("aa","a"), false);
+//        Utils.printTestln(isMatch("aa","aa"), true);
+//        Utils.printTestln(isMatch("aaa","aa"), false);
+//        Utils.printTestln(isMatch("aa", "a*"), true);
+//        Utils.printTestln(isMatch("aab", "a*"), true);
+//        Utils.printTestln(isMatch("aa", ".*"), true);
+//        Utils.printTestln(isMatch("ab", ".*"), true);
+//        Utils.printTestln(isMatch("a", ".*"), true);
+//        Utils.printTestln(isMatch("aab", "c*a*b"), false);
+//
+//        System.out.println("\n>>>Below is the DP version:");
+//
+//        Utils.printTestln(isMatchDP("",""), true);
+//        Utils.printTestln(isMatchDP("","*"), true);
+//        Utils.printTestln(isMatchDP("aa","a"), false);
+//        Utils.printTestln(isMatchDP("aa","aa"), true);
+//        Utils.printTestln(isMatchDP("aaa","aa"), false);
+//        Utils.printTestln(isMatchDP("aa", "a*"), true);
+//        Utils.printTestln(isMatchDP("aab", "a*"), true);
+//        Utils.printTestln(isMatchDP("aa", ".*"), true);
+//        Utils.printTestln(isMatchDP("ab", ".*"), true);
+//        Utils.printTestln(isMatchDP("a", ".*"), true);
+//        Utils.printTestln(isMatchDP("aab", "c*a*b"), false);
+        long s = System.currentTimeMillis();
+//        Utils.printTestln(isMatchDP(padding('a', 32316), '*' + padding('a', 32317) + '*'), false);
+//        System.out.println("It took " + (System.currentTimeMillis() - s) + " milliseconds");
 
-        System.out.println("\n>>>Below is the DP version:");
+        System.out.println("\n>>>Below is the Greedy version:");
 
-        Utils.printTestln(isMatchDP("",""), true);
-        Utils.printTestln(isMatchDP("","*"), true);
-        Utils.printTestln(isMatchDP("aa","a"), false);
-        Utils.printTestln(isMatchDP("aa","aa"), true);
-        Utils.printTestln(isMatchDP("aaa","aa"), false);
-        Utils.printTestln(isMatchDP("aa", "a*"), true);
-        Utils.printTestln(isMatchDP("aab", "a*"), true);
-        Utils.printTestln(isMatchDP("aa", ".*"), true);
-        Utils.printTestln(isMatchDP("ab", ".*"), true);
-        Utils.printTestln(isMatchDP("a", ".*"), true);
-        Utils.printTestln(isMatchDP("aab", "c*a*b"), false);
-        Utils.printTestln(isMatchDP(padding('a', 32316), '*' + padding('a', 32317) + '*'), false);
+        Utils.printTestln(isMatchGreedy("",""), true);
+        Utils.printTestln(isMatchGreedy("","*"), true);
+//        Utils.printTestln(isMatchGreedy("aa","a"), false);
+//        Utils.printTestln(isMatchGreedy("aa","aa"), true);
+//        Utils.printTestln(isMatchGreedy("aaa","aa"), false);
+//        Utils.printTestln(isMatchGreedy("aa", "a*"), true);
+//        Utils.printTestln(isMatchGreedy("aab", "a*"), true);
+//        Utils.printTestln(isMatchGreedy("aa", ".*"), true);
+//        Utils.printTestln(isMatchGreedy("ab", ".*"), true);
+//        Utils.printTestln(isMatchGreedy("a", ".*"), true);
+//        Utils.printTestln(isMatchGreedy("aab", "c*a*b"), false);
+//        s = System.currentTimeMillis();
+//        Utils.printTestln(isMatchGreedy(padding('a', 32316), '*' + padding('a', 32317) + '*'), false);
+//        System.out.println("It took " + (System.currentTimeMillis() - s) + " milliseconds");
     }
 
     private static String padding(char c, int n) {
@@ -112,7 +164,6 @@ public class WildcardMatching {
         for (int i = 0; i < n; i++) {
             sb.append(c);
         }
-
         return sb.toString();
     }
 
