@@ -85,25 +85,43 @@ public class WildcardMatching {
         while (true) {
             int start1 = i1, start2 = i2;
             for (; i2 < p.length() && p.charAt(i2) != '*'; i2++);
-            if (i2 == p.length()) {
-                return isMatchFromEnd(s, p, start2);
+
+            if (lastWildcard == -1 && !isMatchFromEnd(s, start1, p, start2)) {
+                return false;
             }
 
+            if (i2 == p.length()) {
+                if (lastWildcard == -1) {
+                    return isMatchFromEnd(s, start1, p, start2);
+                } else {
+                    return isMatchFromEnd2(s, start1, p, start2);
+                }
+            }
+
+            lastWildcard = 1;
             if ((i1 = isMatchHelp(s, start1, p, start2, i2)) == -1) {
                 return false;
             }
+            
+            i2++;
         }
     }
 
-    private static boolean isMatchFromEnd(String s, String p, int start) {
+    private static boolean isMatchFromEnd(String s, int start1, String p, int start2) {
         int i, j;
-        for (i = s.length() - 1, j = p.length() - 1; i >= 0 && j >= start && (p.charAt(j) == '.' ||s.charAt(i) == p.charAt(j)); i--, j--);
-        return j == start - 1;
+        for (i = s.length() - 1, j = p.length() - 1; i >= start1 && j >= start2 && (p.charAt(j) == '?' ||s.charAt(i) == p.charAt(j)); i--, j--);
+        return j == start2 - 1 && i == start1 - 1;
+    }
+
+    private static boolean isMatchFromEnd2(String s, int start, String p, int start2) {
+        int i, j;
+        for (i = s.length() - 1, j = p.length() - 1; i >= start && j >= start2 && (p.charAt(j) == '?' ||s.charAt(i) == p.charAt(j)); i--, j--);
+        return j == start2 - 1;
     }
 
     private static int isMatchHelp(String s, int start, String p, int start2, int end2) {
         for (int i = 0, j; i < s.length() - start - end2 + start2 + 1; i++) {
-            for (j = 0; j < end2 - start2 && (p.charAt(start2 + j) == '.' || p.charAt(start2 + j) == s.charAt(start + j + i)); j++);
+            for (j = 0; j < end2 - start2 && (p.charAt(start2 + j) == '?' || p.charAt(start2 + j) == s.charAt(start + j + i)); j++);
             if (j == end2 - start2) {
                 return start + j + i;
             }
@@ -119,9 +137,9 @@ public class WildcardMatching {
 //        Utils.printTestln(isMatch("aaa","aa"), false);
 //        Utils.printTestln(isMatch("aa", "a*"), true);
 //        Utils.printTestln(isMatch("aab", "a*"), true);
-//        Utils.printTestln(isMatch("aa", ".*"), true);
-//        Utils.printTestln(isMatch("ab", ".*"), true);
-//        Utils.printTestln(isMatch("a", ".*"), true);
+//        Utils.printTestln(isMatch("aa", "?*"), true);
+//        Utils.printTestln(isMatch("ab", "?*"), true);
+//        Utils.printTestln(isMatch("a", "?*"), true);
 //        Utils.printTestln(isMatch("aab", "c*a*b"), false);
 //
 //        System.out.println("\n>>>Below is the DP version:");
@@ -133,9 +151,9 @@ public class WildcardMatching {
 //        Utils.printTestln(isMatchDP("aaa","aa"), false);
 //        Utils.printTestln(isMatchDP("aa", "a*"), true);
 //        Utils.printTestln(isMatchDP("aab", "a*"), true);
-//        Utils.printTestln(isMatchDP("aa", ".*"), true);
-//        Utils.printTestln(isMatchDP("ab", ".*"), true);
-//        Utils.printTestln(isMatchDP("a", ".*"), true);
+//        Utils.printTestln(isMatchDP("aa", "?*"), true);
+//        Utils.printTestln(isMatchDP("ab", "?*"), true);
+//        Utils.printTestln(isMatchDP("a", "?*"), true);
 //        Utils.printTestln(isMatchDP("aab", "c*a*b"), false);
         long s = System.currentTimeMillis();
 //        Utils.printTestln(isMatchDP(padding('a', 32316), '*' + padding('a', 32317) + '*'), false);
@@ -143,17 +161,15 @@ public class WildcardMatching {
 
         System.out.println("\n>>>Below is the Greedy version:");
 
-        Utils.printTestln(isMatchGreedy("",""), true);
-        Utils.printTestln(isMatchGreedy("","*"), true);
-//        Utils.printTestln(isMatchGreedy("aa","a"), false);
-//        Utils.printTestln(isMatchGreedy("aa","aa"), true);
-//        Utils.printTestln(isMatchGreedy("aaa","aa"), false);
+//        Utils.printTestln(isMatchGreedy("",""), true);
 //        Utils.printTestln(isMatchGreedy("aa", "a*"), true);
 //        Utils.printTestln(isMatchGreedy("aab", "a*"), true);
-//        Utils.printTestln(isMatchGreedy("aa", ".*"), true);
-//        Utils.printTestln(isMatchGreedy("ab", ".*"), true);
-//        Utils.printTestln(isMatchGreedy("a", ".*"), true);
+//        Utils.printTestln(isMatchGreedy("aa", "?*"), true);
+//        Utils.printTestln(isMatchGreedy("ab", "?*"), true);
+//        Utils.printTestln(isMatchGreedy("a", "?*"), true);
 //        Utils.printTestln(isMatchGreedy("aab", "c*a*b"), false);
+//        Utils.printTestln(isMatchGreedy("b", "?*?"), false);
+        Utils.printTestln(isMatchGreedy("aaab", "b**"), false);
 //        s = System.currentTimeMillis();
 //        Utils.printTestln(isMatchGreedy(padding('a', 32316), '*' + padding('a', 32317) + '*'), false);
 //        System.out.println("It took " + (System.currentTimeMillis() - s) + " milliseconds");
