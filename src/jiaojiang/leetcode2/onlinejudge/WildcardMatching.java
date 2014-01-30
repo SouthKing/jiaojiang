@@ -86,31 +86,31 @@ public class WildcardMatching {
             int start1 = i1, start2 = i2;
             for (; i2 < p.length() && p.charAt(i2) != '*'; i2++);
 
-            if (lastWildcard == -1 && !isMatchFromEnd(s, start1, p, start2)) {
-                return false;
-            }
-
-            if (i2 == p.length()) {
-                if (lastWildcard == -1) {
-                    return isMatchFromEnd(s, start1, p, start2);
-                } else {
+            if (lastWildcard == -1) {
+                if (i2 == p.length()) {
+                    return isMatchFromEnd(s, s.length(), p, p.length());
+                }
+                if (!isMatchFromEnd(s, i2, p, i2)) {
+                    return false;
+                }
+                lastWildcard = 1;
+                i1 = i2;
+            } else {
+                 if (i2 == p.length()) {
                     return isMatchFromEnd2(s, start1, p, start2);
                 }
+                if ((i1 = isMatchHelp(s, start1, p, start2, i2)) == -1) {
+                    return false;
+                }
             }
-
-            lastWildcard = 1;
-            if ((i1 = isMatchHelp(s, start1, p, start2, i2)) == -1) {
-                return false;
-            }
-            
             i2++;
         }
     }
 
-    private static boolean isMatchFromEnd(String s, int start1, String p, int start2) {
+    private static boolean isMatchFromEnd(String s, int end, String p, int end2) {
         int i, j;
-        for (i = s.length() - 1, j = p.length() - 1; i >= start1 && j >= start2 && (p.charAt(j) == '?' ||s.charAt(i) == p.charAt(j)); i--, j--);
-        return j == start2 - 1 && i == start1 - 1;
+        for (i = end - 1, j = end2 - 1; i < s.length() && i >= 0 && j < p.length() && j >= 0 && (p.charAt(j) == '?' ||s.charAt(i) == p.charAt(j)); i--, j--);
+        return j == -1 && i == -1;
     }
 
     private static boolean isMatchFromEnd2(String s, int start, String p, int start2) {
@@ -162,17 +162,21 @@ public class WildcardMatching {
         System.out.println("\n>>>Below is the Greedy version:");
 
 //        Utils.printTestln(isMatchGreedy("",""), true);
-//        Utils.printTestln(isMatchGreedy("aa", "a*"), true);
-//        Utils.printTestln(isMatchGreedy("aab", "a*"), true);
-//        Utils.printTestln(isMatchGreedy("aa", "?*"), true);
-//        Utils.printTestln(isMatchGreedy("ab", "?*"), true);
-//        Utils.printTestln(isMatchGreedy("a", "?*"), true);
-//        Utils.printTestln(isMatchGreedy("aab", "c*a*b"), false);
-//        Utils.printTestln(isMatchGreedy("b", "?*?"), false);
+        Utils.printTestln(isMatchGreedy("","ab*"), false);
+        Utils.printTestln(isMatchGreedy("aa","a"), false);
+        Utils.printTestln(isMatchGreedy("aa","aa"), true);
+        Utils.printTestln(isMatchGreedy("aaa","aa"), false);
+        Utils.printTestln(isMatchGreedy("aa", "a*"), true);
+        Utils.printTestln(isMatchGreedy("aab", "a*"), true);
+        Utils.printTestln(isMatchGreedy("aa", "?*"), true);
+        Utils.printTestln(isMatchGreedy("ab", "?*"), true);
+        Utils.printTestln(isMatchGreedy("a", "?*"), true);
+        Utils.printTestln(isMatchGreedy("aab", "c*a*b"), false);
+        Utils.printTestln(isMatchGreedy("b", "?*?"), false);
         Utils.printTestln(isMatchGreedy("aaab", "b**"), false);
-//        s = System.currentTimeMillis();
-//        Utils.printTestln(isMatchGreedy(padding('a', 32316), '*' + padding('a', 32317) + '*'), false);
-//        System.out.println("It took " + (System.currentTimeMillis() - s) + " milliseconds");
+        s = System.currentTimeMillis();
+        Utils.printTestln(isMatchGreedy(padding('a', 32316), '*' + padding('a', 32317) + '*'), false);
+        System.out.println("It took " + (System.currentTimeMillis() - s) + " milliseconds");
     }
 
     private static String padding(char c, int n) {

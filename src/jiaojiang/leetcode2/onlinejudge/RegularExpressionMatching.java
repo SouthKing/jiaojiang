@@ -29,28 +29,22 @@ public class RegularExpressionMatching {
      */
     public static boolean isMatch(String s, String p) {
         return isMatch(s, 0, p, 0);
-        
     }
 
-    private static boolean isMatch(String s, int sS, String p, int pS) {
-        if (pS == p.length())  {
-            return sS == s.length();
+    private static boolean isMatch(String s, int s1, String p, int s2) {
+        if (s2 == p.length()) {
+            return s1 == s.length();
         }
 
-        if (sS == s.length()) {
-            for (int i = pS; i < p.length(); i++) {
-                if (p.charAt(pS) != '*') {
-                    return false;
-                }
+        if (s1 < s.length() && (p.charAt(s2) == '.' || p.charAt(s2) == s.charAt(s1))) {
+            if (s2 + 1 < p.length() && p.charAt(s2 + 1) == '*') {
+                return isMatch(s, s1 + 1, p, s2) || isMatch(s, s1, p, s2 + 2);
+            } else {
+                return isMatch(s, s1 + 1, p, s2 + 1);
             }
-            return true;
         }
 
-        if (p.charAt(pS) != '*') {
-            return (p.charAt(pS) == '.' || p.charAt(pS) == s.charAt(sS)) && isMatch(s, sS + 1, p, pS + 1);
-        }
-
-        return isMatch(s, sS + 1, p, pS) || isMatch(s, sS + 1, p, pS + 1);
+        return s2 + 1 < p.length() && p.charAt(s2 + 1) == '*' && isMatch(s, s1, p, s2 + 2);
     }
 
     private static void test() {
@@ -60,7 +54,8 @@ public class RegularExpressionMatching {
         Utils.printTestln(isMatch("aa", "a*"), true);
         Utils.printTestln(isMatch("aa", ".*"), true);
         Utils.printTestln(isMatch("ab", ".*"), true);
-        Utils.printTestln(isMatch("aab", "c*a*b"), false);
+        Utils.printTestln(isMatch("aab", "c*a*b"), true);
+        Utils.printTestln(isMatch("ab", ".*c"), false);
     }
 
     public static void main(String[] args) {
