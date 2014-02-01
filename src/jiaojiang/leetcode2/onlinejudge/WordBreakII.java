@@ -22,30 +22,63 @@ public class WordBreakII {
      */
     public static ArrayList<String> wordBreak(String s, Set<String> dict) {
         ArrayList<String> ret = new ArrayList<String>();
-        wordBreak(s, 0, dict, ret);
+        wordBreak(s, 0, dict, new StringBuffer(), ret);
         return ret;
     }
 
-    private static boolean wordBreak(String s, int start, Set<String> dict, List<String> ret) {
+    // it is depth first search
+    private static void wordBreak(String s, int start, Set<String> dict, StringBuffer sb, List<String> ret) {
         if (start == s.length()) {
-            return true;
+            ret.add(sb.toString().trim());
+            return;
         }
 
         for (int i = start + 1; i <= s.length(); i++) {
-            if ( dict.contains(s.substring(start, i)) && wordBreak(s, i, dict, ret)) {
-                ret.add(s.substring(start, i));
-                return true;
+            if ( dict.contains(s.substring(start, i))) {
+                sb.append(s.substring(start, i)).append(' ');
+                wordBreak(s, i, dict, sb, ret);
+                sb.setLength(sb.length() - i + start - 1);
+            }
+        }
+    }
+
+    public static ArrayList<String> wordBreakBFS(String s, Set<String> dict) {
+        ArrayList<String> ret = new ArrayList<String>();
+
+        Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
+        Queue<Integer> q = new LinkedList<Integer>();
+        q.add(0);
+
+        while (!q.isEmpty()) {
+            int start = q.remove();
+            for (int end = start + 1; end <= s.length(); end++) {
+                if (dict.contains(s.substring(start, end))) {
+                    q.add(end);
+                    if (!map.containsKey(end)) {
+                        map.put(end, new ArrayList<Integer>());
+                    }
+                    map.get(end).add(start);
+                }
             }
         }
 
-        return false;
+        Utils.printListln(map.get(s.length()));
+
+//        getSentence(s, map, s.length(), new StringBuffer(), ret);
+
+        return new ArrayList<String>();
     }
 
-    public static ArrayList<String> wordBreakDP(String s, Set<String> dict) {
-        ArrayList<String> ret = new ArrayList<String>();
+    private static void getSentence(String s, Map<Integer, List<Integer>> tree, int end, StringBuffer sb, List<String> ret) {
+        if (end == 0) {
+            ret.add(sb.toString().trim());
+        }
 
-
-        return ret;
+        for (int i : tree.get(end)) {
+            sb.append(s.substring(i, end)).append(' ');
+            getSentence(s, tree, i, sb, ret);
+            sb.setLength(sb.length() - i + end - 1);
+        }
     }
 
     private static void test() {
@@ -53,8 +86,8 @@ public class WordBreakII {
 
         System.out.println("------------------");
 
-        Utils.printListln(wordBreakDP("catsanddog", new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog"))));
-        Utils.printListln(wordBreakDP("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+        Utils.printListln(wordBreakBFS("catsanddog", new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog"))));
+        Utils.printListln(wordBreakBFS("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
                 new HashSet<String>(Arrays.asList("a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"))));
     }
 
