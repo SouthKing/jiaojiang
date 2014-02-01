@@ -17,7 +17,18 @@ public class Candy {
     What is the minimum candies you must give?
      */
     public static int candy(int[] ratings) {
-        return 0;
+        int total = 0, start = 0;
+        for (int i = 0, j; i < ratings.length; ) {
+            if (i > 0 && ratings[i] == ratings[i - 1]) {
+                start = 0;
+            }
+            for (j = i + 1; j < ratings.length && ratings[j - 1] > ratings[j]; j++);
+            total += (j - i + 1) * (j - i) / 2 + Math.max(0, start - j + i + 1);
+            start = j - i > 1 ? 1 : start + 1;
+            i = j;
+        }
+
+        return total;
     }
 
     public static void test() {
@@ -30,6 +41,7 @@ public class Candy {
         Utils.printTestln(candy(new int[]{1, 2, 3, 4}), 10);
         Utils.printTestln(candy(new int[]{4, 3, 2, 1}), 10);
         Utils.printTestln(candy(new int[]{4, 2, 3, 4, 1}), 9);
+        Utils.printTestln(candy(new int[]{5, 1, 1, 1, 10, 2, 1, 1, 1, 3}), 15);
         Utils.printTestln(candy(new int[]{58, 21, 72, 77, 48, 9, 38, 71, 68, 77, 82}), 22);
         Utils.printTestln(candy(new int[]{58, 21, 72, 77, 48, 9, 38, 71, 68, 77, 82, 47, 25, 94, 89, 54, 26, 54, 54, 99}), 40);
     }
