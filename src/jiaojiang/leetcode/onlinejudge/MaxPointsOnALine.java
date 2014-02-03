@@ -50,12 +50,12 @@ public class MaxPointsOnALine {
     }
 
     private static void test() {
-//        Utils.printTestln(maxPoints(Point.getPoints()), 3);
-//        Utils.printTestln(maxPoints(new Point[]{new Point(), new Point(1, 1), new Point()}), 3);
-//        Utils.printTestln(maxPoints(new Point[]{new Point(1, 1), new Point(1, 1), new Point(1, 1)}), 3);
+        Utils.printTestln(maxPoints(Point.getPoints()), 3);
+        Utils.printTestln(maxPoints(new Point[]{new Point(), new Point(1, 1), new Point()}), 3);
+        Utils.printTestln(maxPoints(new Point[]{new Point(1, 1), new Point(1, 1), new Point(1, 1)}), 3);
         Utils.printTestln(maxPoints(new Point[]{new Point(2, 3), new Point(3, 3), new Point(-5, 3)}), 3);
-//        Utils.printTestln(maxPoints(new Point[]{new Point(84,250), new Point(0, 0), new Point(1, 0), new Point(0, -70),
-//                new Point(0, -70), new Point(1, -1), new Point(21, 10), new Point(42, 90), new Point(-42, -230)}), 6);
+        Utils.printTestln(maxPoints(new Point[]{new Point(84,250), new Point(0, 0), new Point(1, 0), new Point(0, -70),
+                new Point(0, -70), new Point(1, -1), new Point(21, 10), new Point(42, 90), new Point(-42, -230)}), 6);
     }
 
     public static void main(String[] args) {
