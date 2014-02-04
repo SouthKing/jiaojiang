@@ -51,6 +51,33 @@ public class TreeNode {
         return root;
     }
 
+    /*
+             8
+          /      \
+         4       19
+        / \     /  \
+       3   6   11  20
+            \   \
+            7   14
+     */
+    public static TreeNode getSampleBinarySearchTree() {
+        TreeNode root = new TreeNode(8);
+
+        root.left = new TreeNode(4);
+        root.right = new TreeNode(19);
+
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(6);
+        root.right.left = new TreeNode(11);
+        root.right.right = new TreeNode(20);
+
+
+        root.left.right.right = new TreeNode(7);
+        root.right.left.right = new TreeNode(14);
+
+        return root;
+    }
+
     public static void main(String[] args) {
         TreeNode root = getSampleTree();
         inOrder(root);
