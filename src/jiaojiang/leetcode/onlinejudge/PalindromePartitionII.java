@@ -77,8 +77,6 @@ public class PalindromePartitionII {
         Utils.printTestln(minCutDP("ab"), 1);
         Utils.printTestln(minCutDP("cabababcbc"), 3);
         Utils.printTestln(minCutDP("ababababababababababababcbabababababababababababa"), 0);
-
-
     }
 
     public static void main(String[] args) {
