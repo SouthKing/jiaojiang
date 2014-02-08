@@ -8,13 +8,13 @@ import java.util.ArrayList;
  * @since: Jan 1, 2014 11:20:05 PM
  */
 public class Interval {
-    int start;
-    int end;
-    Interval() {
+    public int start;
+    public int end;
+    public Interval() {
         start = end = 0;
     }
 
-    Interval(int s, int e) {
+    public Interval(int s, int e) {
         start = s;
         end = e;
     }
@@ -23,6 +23,7 @@ public class Interval {
         return "[" + start + ", " + end + "]";
     }
 
+    //[1, 3], [2, 6], [5, 9], [8, 10], [15, 18]
     public static List<Interval> getSampleIntervals() {
         List<Interval> ret = new ArrayList<Interval>();
         ret.add(new Interval(1, 3));
@@ -34,6 +35,7 @@ public class Interval {
         return ret;
     }
 
+    //[1, 4], [4, 5]
     public static List<Interval> getSampleIntervals2() {
         List<Interval> ret = new ArrayList<Interval>();
         ret.add(new Interval(1, 4));
@@ -42,6 +44,7 @@ public class Interval {
         return ret;
     }
 
+    //[1, 4], [2, 3]
     public static List<Interval> getSampleIntervals3() {
         List<Interval> ret = new ArrayList<Interval>();
         ret.add(new Interval(1, 4));
